@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bestdressworld</title>
+  <title>find the best dress of the world!</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= yield(:stylesheet) %>
   <%= javascript_include_tag "application" %>
+  <%= yield(:javascript) %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render :partial => 'common/header' %>
+  <%= yield %>
+  <%= render :partial => 'common/footer' %>
 </body>
 </html>

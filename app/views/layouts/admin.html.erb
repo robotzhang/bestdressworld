@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <title>Books</title>
+  <title>the best dress of the world admin system!</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,11 +9,11 @@
 <body>
     <div>
         <div class="pull-right" style="padding: 10px;;">
-          欢迎：<%= current_user.nickname %><small><%= current_user.role %></small>
+          欢迎：admin
           -
-          <a href="<%= logout_url %>">退出</a>
+          <a href="#">退出</a>
           -
-          <a href="<%= root_url %>">网站首页</a>
+          <a target="_blank" href="<%= root_url %>">网站首页</a>
         </div>
         <ul class="nav nav-tabs" style="padding: 10px 20px; padding-bottom: 0;;">
           <li<%= ' class=active' if params[:controller] == 'admin/products' %>><a href="<%= url_for(:controller => 'admin/products') %>">产品管理</a></li>

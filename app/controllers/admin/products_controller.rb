@@ -11,6 +11,6 @@ class Admin::ProductsController < ApplicationController
         :AWS_access_key_id => 'AKIAIRZLCIDBLLOW7W3A',
         :AWS_secret_key => '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'
     }
-    @product = Amazon::Ecs.item_lookup(sku, {})
+    @product = Amazon::Ecs.item_lookup(sku, {:ResponseGroup => 'Accessories,ItemAttributes,Large,PromotionSummary,OfferFull,Offers,VariationSummary'})
   end
 end

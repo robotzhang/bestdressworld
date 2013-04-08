@@ -1,5 +1,13 @@
 <div class="mb10">
   <a class="btn" href="<%= url_for(:controller => 'admin/products', :action => 'new') %>"><i class="icon-plus-sign"></i> 添加产品</a>
+  -
+  <div class="input-prepend input-append mb0">
+    <form class="mb0" method="get" action="<%= url_for(:controller => 'admin/products', :action => 'amazon') %>">
+    <span class="add-on">sku</span>
+    <input class="span2" name="sku" type="text">
+    <button class="btn" type="submit">爬取</button>
+    </form>
+  </div>
 </div>
 
 <table class="table table-bordered table-striped">

@@ -3,5 +3,6 @@ Bestdressworld::Application.routes.draw do
   get 'admin' => 'application#admin'
   namespace :admin do |admin|
     resources :products
+    get 'amazon' => 'products#amazon'
   end
 end

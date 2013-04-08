@@ -3,4 +3,8 @@ class ApplicationController < ActionController::Base
   def homepage
     render :template => 'homepage'
   end
+
+  def admin
+    redirect_to admin_products_url
+  end
 end

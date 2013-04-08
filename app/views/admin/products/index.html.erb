@@ -1,0 +1,34 @@
+<div class="mb10">
+  <a class="btn" href="<%= url_for(:controller => 'admin/products', :action => 'new') %>"><i class="icon-plus-sign"></i> 添加产品</a>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>图书名称</th>
+    <th>语言</th>
+    <th>创建时间</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |book| %>
+  <tr>
+    <td><%= book.id %></td>
+    <td><%= book.name %></td>
+    <td><%= book.language %></td>
+    <td><%= book.created_at.to_date %></td>
+    <td>
+      <a href="<%= edit_polymorphic_url([:admin, book]) %>"><i class="icon-edit"></i>编辑</a>
+      |
+      <%= link_to content_tag(:i, '', 'class'=>'icon-remove-sign')+"删除", admin_book_path(book), :confirm => "确定删除?", :method=>:delete %>
+      |
+      <a href="<%= admin_chapters_url(:book_id => book.id) %>"><i class="icon-th"></i>章节</a>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @books %>

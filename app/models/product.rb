@@ -1,3 +1,3 @@
-class Products < ActiveRecord::Base
+class Product < ActiveRecord::Base
   # attr_accessible :title, :body
 end

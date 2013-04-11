@@ -13,9 +13,15 @@
     <% end %>
     <%= f.hidden_field :id %>
     <div class="control-group">
-      <%= f.label :url, '目标URL', :class => "control-label" %>
+      <%= f.label :name, 'Name', :class => "control-label" %>
       <div class="controls">
-
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :seo_url, 'SEO Url', :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :seo_url %>
       </div>
     </div>
 

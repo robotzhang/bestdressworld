@@ -7,7 +7,7 @@ class AmazonAPI
     }
   end
 
-  def get(asin, opts={:ResponseGroup => 'Images,ItemAttributes,Offers,VariationSummary,EditorialReview,Reviews,SalesRank,VariationImages',
+  def get(asin, opts={:ResponseGroup => 'Images,ItemAttributes,Offers,VariationSummary,EditorialReview,Reviews,SalesRank',
                       :MerchantId => 'All'})
     Amazon::Ecs.item_lookup(asin, opts).first_item
   end

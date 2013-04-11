@@ -1,0 +1,26 @@
+<%= form_for [:admin, @product], :html => { :class => 'form-horizontal' } do |f| %>
+    <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if @product.errors.any? %>
+    <div>
+      <ul class="unstyled well-small alert-error">
+        <% for message in @product.errors.full_messages %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <%= f.hidden_field :id %>
+    <div class="control-group">
+      <%= f.label :url, '目标URL', :class => "control-label" %>
+      <div class="controls">
+
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '提交', :class => 'btn btn-primary' %>
+      <a href="<%= admin_products_url %>"><i class="icon-share-alt"></i>返回产品管理</a>
+    </div>
+<% end %>

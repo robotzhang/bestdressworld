@@ -20,18 +20,19 @@ class AmazonAPI
         :sale_price => 0
     }
     # Offers
-    price.merge(self.format_price(item.get_elements('Offers/Offer/OfferListing/Price')))
+    price.merge!(self.format_price(item.get_elements('Offers/Offer/OfferListing/Price')))
     save = self.format_price(item.get_elements('Offers/Offer/OfferListing/AmountSaved'))
     price[:sale_price] = price[:price] + save[:price]
 
+    #p price
     # ItemAttributes/ListPrice
     if price[:price] == 0
-      price.merge(self.format_price(item.get_elements('ItemAttributes/ListPrice')))
+      price.merge!(self.format_price(item.get_elements('ItemAttributes/ListPrice')))
     end
 
     # VariationSummary
     if price[:price] == 0
-      price.merge(self.format_price(item.get_elements('VariationSummary/HighestPrice')))
+      price.merge!(self.format_price(item.get_elements('VariationSummary/HighestPrice')))
       sale = self.format_price(item.get_elements('VariationSummary/LowestSalePrice'))
       price[:sale_price] = sale[:price]
       if price[:sale_price] == 0
@@ -50,8 +51,9 @@ class AmazonAPI
         :currency => 'USD'
     }
     return price if item.blank?
-    price[:price] = item.get('FormattedPrice').gsub(/[^\d.]/, '').to_f
-    price[:currency] = item.get('CurrencyCode')
+    price[:price] = item[0].get('FormattedPrice').gsub(/[^\d.]/, '').to_f
+    price[:currency] = item[0].get('CurrencyCode')
+
     price
   end
 end

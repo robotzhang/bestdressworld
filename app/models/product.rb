@@ -2,6 +2,7 @@
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
+  has_many :images, :as => :imageable
 
   def self.get_amazon(asin)
     AmazonAPI.new.get(asin)

@@ -1,3 +1,5 @@
+<% attrs = Product.new.attributes.map { |k, v| k } # 将数据表整理成数组 %>
+
 <%= form_for [:admin, @product], :html => { :class => 'form-horizontal' } do |f| %>
     <% if flash[:alert] %>
     <div class="alert"><%= flash[:alert] %></div>
@@ -12,18 +14,17 @@
     </div>
     <% end %>
     <%= f.hidden_field :id %>
+
+    <% @product.attributes.each do |key, value| %>
+    <% if attrs.include?(key) && !['id', 'created_at', 'updated_at'].include?(key) %>
     <div class="control-group">
-      <%= f.label :name, 'Name', :class => "control-label" %>
+      <%= f.label key, :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :name %>
+        <%= f.text_field key, :class => "input-xxlarge" %>
       </div>
     </div>
-    <div class="control-group">
-      <%= f.label :seo_url, 'SEO Url', :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :seo_url %>
-      </div>
-    </div>
+    <% end %>
+    <% end %>
 
     <div class="form-actions">
       <%= f.submit '提交', :class => 'btn btn-primary' %>

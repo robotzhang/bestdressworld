@@ -1,5 +1,8 @@
+#coding=utf-8
 class Product < ActiveRecord::Base
-  attr_accessible :asin, :sku, :name, :from_url, :buy_url
+  #attr_accessible :asin, :sku, :name, :from_url, :buy_url
+  validates_uniqueness_of :asin, :message => "%{value} 已经入库"
+
   def self.get_amazon(asin)
     AmazonAPI.new.get(asin)
     self.to_product(AmazonAPI.new.get(asin))
@@ -23,18 +26,5 @@ class Product < ActiveRecord::Base
     product.currency = price[:currency]
 
     product
-  end
-
-  # 价格的优先级Offers > PriceList > VariationSummary
-  def self.get_price_amazon(item)
-    price_highest = item.get('VariationSummary/HighestPrice/FormattedPrice')
-    price_highest = price_highest.gsub(/[^\d.]/, '').to_f unless price_highest.blank?
-    price_lowest = item.get('VariationSummary/LowestPrice/FormattedPrice')
-    price_lowest = price_lowest.gsub(/[^\d.]/, '').to_f unless price_lowest.blank?
-    p '='*100
-    p price_highest
-    p price_highest.to_f
-    p '='*100
-    price_highest
   end
 end

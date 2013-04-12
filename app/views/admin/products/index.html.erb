@@ -1,6 +1,9 @@
+<% unless flash[:error].blank? %>
 <div class="alert alert-error">
   <%= flash[:error] %>
 </div>
+<% end %>
+
 <div class="mb10">
   <a class="btn" href="<%= url_for(:controller => 'admin/products', :action => 'new') %>"><i class="icon-plus-sign"></i> 添加产品</a>
   -

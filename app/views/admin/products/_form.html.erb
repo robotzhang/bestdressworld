@@ -16,27 +16,43 @@
 
     <%= f.hidden_field :id %>
 
-    <% @product.attributes.each do |key, value| %>
-    <% if attrs.include?(key) && !['id', 'created_at', 'updated_at'].include?(key) %>
-    <div class="control-group">
-      <%= f.label key, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field key, :class => "input-xxlarge" %>
-      </div>
+    <div class="pull-left">
+        <% @product.attributes.each do |key, value| %>
+        <% if attrs.include?(key) && !['id', 'created_at', 'updated_at'].include?(key) %>
+        <div class="control-group">
+          <%= f.label key, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field key %>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
     </div>
-    <% end %>
-    <% end %>
 
-    <%= f.fields_for :description do |builder| %>
-        <%= render "description_fields", :f => builder %>
-    <% end %>
+    <div class="pull-left">
+        <div>
+        <%= f.fields_for :discount do |builder| %>
+            <%= render "discount_fields", :f => builder %>
+        <% end %>
+        </div>
 
-    <%= f.fields_for :images do |builder| %>
-        <%= render "image_fields", :f => builder %>
-    <% end %>
+        <div style="border-top: 2px red solid; margin: 0 0 10px 30px;"></div>
+
+        <%= f.fields_for :images do |builder| %>
+            <%= render "image_fields", :f => builder %>
+        <% end %>
+    </div>
+
+    <div class="pull-left">
+      <%= f.fields_for :description do |builder| %>
+          <%= render "description_fields", :f => builder %>
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
 
     <div class="form-actions">
       <%= f.submit '提交', :class => 'btn btn-primary' %>
-      <a href="<%= admin_products_url %>"><i class="icon-share-alt"></i>返回产品管理</a>
+      <a href="<%= admin_products_url %>" style="margin-left: 10px;"><i class="icon-share-alt"></i>返回产品管理</a>
     </div>
 <% end %>

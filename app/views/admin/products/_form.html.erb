@@ -27,6 +27,10 @@
     <% end %>
     <% end %>
 
+    <%= f.fields_for :description do |builder| %>
+        <%= render "description_fields", :f => builder %>
+    <% end %>
+
     <%= f.fields_for :images do |builder| %>
         <%= render "image_fields", :f => builder %>
     <% end %>

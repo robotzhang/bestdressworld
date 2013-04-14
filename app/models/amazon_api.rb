@@ -39,7 +39,6 @@ class AmazonAPI
     save = self.format_price(item.get_elements('Offers/Offer/OfferListing/AmountSaved'))
     price[:sale_price] = price[:price] + save[:price]
 
-    #p price
     # ItemAttributes/ListPrice
     if price[:price] == 0
       price.merge!(self.format_price(item.get_elements('ItemAttributes/ListPrice')))

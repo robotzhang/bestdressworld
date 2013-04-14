@@ -3,7 +3,9 @@ class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
   has_many :images, :as => :imageable
+  has_one :description
   accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :description
 
   def self.get_amazon(asin)
     AmazonAPI.new.get(asin)
@@ -26,7 +28,9 @@ class Product < ActiveRecord::Base
     price = AmazonAPI.get_price(item)
     product.price = price[:price]
     product.currency = price[:currency]
-
+    # get description
+    product.description = Description.new.get_from_amazon(item)
+    # get images
     product.images = AmazonAPI.images(item)
 
     product

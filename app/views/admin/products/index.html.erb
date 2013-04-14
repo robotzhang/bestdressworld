@@ -22,7 +22,7 @@
     <th>ID</th>
     <th>ASIN</th>
     <th>产品名称</th>
-    <th>价格</th>
+    <th>折扣/原价</th>
     <th>创建时间</th>
     <th>操作</th>
   </tr>
@@ -33,7 +33,7 @@
     <td><%= product.id %></td>
     <td><%= product.asin %></td>
     <td><%= product.name %></td>
-    <td><%= product.currency %> <%= product.price %></td>
+    <td><%= product.currency %> <strong><%= product.discount.sale_price %></strong> / <%= product.price %></td>
     <td><%= product.created_at.to_date %></td>
     <td>
       <a href="<%= edit_polymorphic_url([:admin, product]) %>"><i class="icon-edit"></i>编辑</a>

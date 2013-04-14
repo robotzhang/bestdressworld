@@ -13,6 +13,7 @@
       </ul>
     </div>
     <% end %>
+
     <%= f.hidden_field :id %>
 
     <% @product.attributes.each do |key, value| %>
@@ -24,6 +25,10 @@
       </div>
     </div>
     <% end %>
+    <% end %>
+
+    <%= f.fields_for :images do |builder| %>
+        <%= render "image_fields", :f => builder %>
     <% end %>
 
     <div class="form-actions">

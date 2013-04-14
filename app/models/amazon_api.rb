@@ -12,6 +12,21 @@ class AmazonAPI
     Amazon::Ecs.item_lookup(asin, opts).first_item
   end
 
+  # 获取图片
+  def self.images(item, size='LargeImage')
+    images = []
+    arrs = item.get_elements('ImageSets/ImageSet/' + size)
+    arrs.each do |arr|
+      image = Image.new
+      image.url = arr.get('URL')
+      image.width = arr.get('Width')
+      image.height = arr.get('Height')
+      images << image
+    end
+
+    images
+  end
+
   # 价格的优先级Offers > PriceList > VariationSummary
   def self.get_price(item)
     price = {

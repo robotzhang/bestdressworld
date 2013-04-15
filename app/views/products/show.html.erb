@@ -1,0 +1,26 @@
+<div class="container" style="background-color: #fff;">
+  <div class="row">
+    <div class="span6" style="text-align: center; background: url(<%= asset_path('product_img_bg.png') %>);">
+      <a target="_blank" href="<%= @product.buy_url %>">
+        <img title="<%= @product.name %>" alt="<%= @product.name %>" src="<%= @product.images[0].url %>" />
+      </a>
+    </div>
+    <div class="span6">
+      <div style="">
+        <div style="padding: 10px 10px 15px 12px; position: relative; border-radius: 5px; overflow: hidden; background-color: #FFF8E6;">
+         <p><a title="<%= @product.name %>" style="text-decoration: underline; color: #333;" target="_blank" href="<%= @product.buy_url %>"><%= @product.name[0, 45] + '...' %></a></p>
+         <p>
+           <span style="text-decoration: line-through;">$<%= @product.price %></span>
+           <span style="font-size: 20px; color: #000;">$<%= @product.discount.sale_price %></span>
+         </p>
+         <div class="pull-right" style="position: absolute;top: 20px; left: 350px;">
+           <a target="_blank" class="btn btn-large" href="<%= @product.buy_url %>">Buy!</a>
+         </div>
+        </div>
+        <div class="mt10" style="line-height: 19px;">
+          <%= simple_format(@product.description.content) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

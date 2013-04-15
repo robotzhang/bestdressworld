@@ -1,7 +1,9 @@
 <div class="item">
   <div class="bg">
     <div class="pic">
-      <img width="225" height="<%= product.images[0].height * 225 / product.images[0].width %>" src="<%= product.images[0].url %>" />
+      <a href="<%= product_url(product.seo_url) %>" target="_blank">
+        <img width="225" height="<%= product.images[0].height * 225 / product.images[0].width %>" src="<%= product.images[0].url %>" />
+      </a>
     </div>
     <div class="content">
       <%= product.name.downcase %>

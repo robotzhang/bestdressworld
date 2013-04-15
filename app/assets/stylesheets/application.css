@@ -13,3 +13,14 @@
 .mt10 { margin-top: 10px!important; }
 .mb10 { margin-bottom: 10px!important; }
 .mb0 { margin-bottom: 0px!important; }
+
+body { background-color: #f2f2f2; background-image: url(bg.png); color: #2a2a2a;  }
+
+.waterfall {  }
+.waterfall .col { float: left; width: 228px; margin-right: 16px; }
+#col_3 { margin-right: 0; }
+.waterfall .col .item { width: 228px; position: relative; margin-bottom: 20px;  }
+.waterfall .col .bg { overflow: hidden; width: 225px; padding-right: 3px; border-radius: 5px 10px 0 0; background: url(wall_bg_shadow.png); }
+.waterfall .col .item .pic {  }
+.waterfall .col .item .content { padding: 10px 9px 5px 8px; background-color: #fff; }
+.waterfall .col .ft { box-shadow: 2px 3px 4px #ddd; width: 225px; height: 5px; border-radius: 0 0 5px 5px;  background-color: #fff; }

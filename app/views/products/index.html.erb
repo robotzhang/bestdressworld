@@ -1,0 +1,11 @@
+<div class="container waterfall mt10" style="width: 960px;">
+  <% (0..3).each do |column| %>
+      <div class="col" id="col_<%=column%>">
+        <% @products.each_with_index do |product, index| %>
+          <% if (index+1) % 4 == column %>
+            <%= render :partial => "item", :locals => {:product => product} %>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
+</div>

@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.nav-bar .find, #cate-panel').mouseover(function(){
+    $('#cate-panel').css({
+        left: $('.nav-bar .find a').offset().left
+    }).show();
+  }).mouseout(function() {
+    if ($('#cate-panel').attr('show') == 'true') {
+      return false;
+    }
+    $('#cate-panel').hide();
+  });
+});

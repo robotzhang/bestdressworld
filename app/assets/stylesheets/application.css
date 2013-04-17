@@ -25,7 +25,7 @@ body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: 
 .header .nav-bar li.find { background: url(http://www.mogujie.com//img/icon-nav-button-bg-v5.png) no-repeat -180px 1px; width: 172px; height: 32px; margin: 0 12px 0 8px; padding: 0; }
 .header .nav-bar li.find a { background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat 12px 14px; padding-left: 31px; width: 141px; height: 36px; line-height: 36px; border-radius: 5px 5px 0 0; position: relative; color: #fff; }
 .header .nav-bar .current { background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat -172px -151px; }
-#cate-panel { left: 211px; top: 136px;padding: 0 6px 7px 0; width: 171px; position: absolute; z-index: 9888; background: url(cate-nav-bg.png) right top no-repeat; }
+#cate-panel { display: none; left: 211px; top: 136px;padding: 0 6px 7px 0; width: 171px; position: absolute; z-index: 9888; background: url(cate-nav-bg.png) right top no-repeat; }
 .cate-nav { border-radius: 0 0 5px 5px; padding: 6px 0; background: #f8f9f7; zoom: 1; margin: 0; }
 .cate-nav li { margin: 5px 0; padding-left: 10px; height: 45px; color: #666; position: relative; list-style: none; border-bottom: #E9EAE8 1px solid; }
 .cate-nav li b { position: absolute; display: block; width: 5px; height: 7px; background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat 0 -260px; right: 14px; top: 7px; }

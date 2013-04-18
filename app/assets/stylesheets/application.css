@@ -26,14 +26,14 @@ body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: 
 .header .nav-bar a { line-height: 36px; height: 36px; color: #666; display: block; font-size: 14px; font-weight: bold; float: left; }
 .header .nav-bar a:hover { color: #FA649F; text-decoration: none; }
 .header .nav-bar li { float: left; padding: 0 17px; height: 36px; line-height: 40px; }
-.header .nav-bar .split { background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat -20px -86px; }
-.header .nav-bar li.find { background: url(http://www.mogujie.com//img/icon-nav-button-bg-v5.png) no-repeat -180px 1px; width: 172px; height: 32px; margin: 0 12px 0 8px; padding: 0; }
-.header .nav-bar li.find a { background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat 12px 14px; padding-left: 31px; width: 141px; height: 36px; line-height: 36px; border-radius: 5px 5px 0 0; position: relative; color: #fff; }
-.header .nav-bar .current { background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat -172px -151px; }
+.header .nav-bar .split { background: url(split.png) no-repeat left center; }
+.header .nav-bar li.find { background: url(find-all-bg.png) no-repeat; width: 172px; height: 32px; margin: 0 12px 0 8px; padding: 0; }
+.header .nav-bar li.find a { background: url(find-all.png) no-repeat 12px 14px; padding-left: 31px; width: 141px; height: 36px; line-height: 36px; border-radius: 5px 5px 0 0; position: relative; color: #fff; }
+.header .nav-bar .active { background: url(nav-dotted.png) center 29px no-repeat; }
 #cate-panel { display: none; left: 203px; top: 105px;padding: 0 6px 7px 0; width: 171px; position: absolute; z-index: 9888; background: url(cate-nav-bg.png) right top no-repeat; }
 .cate-nav { border-radius: 0 0 5px 5px; padding: 6px 0; background: #f8f9f7; zoom: 1; margin: 0; }
 .cate-nav li { margin: 5px 0; padding-left: 10px; height: 45px; color: #666; position: relative; list-style: none; border-bottom: #E9EAE8 1px solid; }
-.cate-nav li b { position: absolute; display: block; width: 5px; height: 7px; background: url(http://www.mogujie.com/img/icon-nav-bg.png) no-repeat 0 -260px; right: 14px; top: 7px; }
+.cate-nav li b { position: absolute; display: block; width: 5px; height: 7px; background: url(narrow-right.png) no-repeat; right: 14px; top: 7px; }
 .cate-nav .big a { display: block; font-size: 14px; }
 .cate-nav .sub a { font-size: 12px; display: inline; color: #707070; }
 .cate-nav .sub a:hover { color: #FA649F; }

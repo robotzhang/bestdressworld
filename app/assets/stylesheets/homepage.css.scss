@@ -1,5 +1,6 @@
 .slides { padding: 15px; margin-left: 180px; height: 330px; }
-.slides .content { list-style: none; margin: 0; height: 330px; }
+.slides .content { list-style: none; margin: 0; height: 330px; overflow: hidden; }
+.slides .content li { float: left; }
 .slides .content img { width: 750px; }
 .slides .control {  position: absolute; z-index: 1; margin-top: -65px;  }
 .slides .control ul { list-style: none; margin: 0; height: 46px; overflow: hidden; padding-top: 18px;  }

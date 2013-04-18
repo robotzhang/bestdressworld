@@ -1,12 +1,14 @@
-<div class="container" style="background-color: #fff;">
+<div class="container box" style="border: #DCDCDC 1px solid;">
   <div class="row">
-    <div class="span6" style="text-align: center; background: url(<%= asset_path('product_img_bg.png') %>);">
+    <div class="span6" style="background-color: #FBFBFB; border-radius: 5px 0 0 5px;">
+      <div style="text-align: center; background: url(<%= asset_path('product_img_bg.png') %>); margin: 20px;">
       <a target="_blank" href="<%= @product.buy_url %>">
         <img title="<%= @product.name %>" alt="<%= @product.name %>" src="<%= @product.images[0].url %>" />
       </a>
+      </div>
     </div>
     <div class="span6">
-      <div style="">
+      <div class="mt15">
         <div style="padding: 10px 10px 15px 12px; position: relative; border-radius: 5px; overflow: hidden; background-color: #FFF8E6;">
          <p><a title="<%= @product.name %>" style="text-decoration: underline; color: #333;" target="_blank" href="<%= @product.buy_url %>"><%= @product.name[0, 45] + '...' %></a></p>
          <p>
@@ -20,6 +22,10 @@
         <div class="mt10" style="line-height: 19px;">
           <%= simple_format(@product.description.content) %>
         </div>
+      </div>
+
+      <div style="text-align: center;">
+        <textarea style="width: 440px; height: 60px;">say something O(∩_∩)O</textarea>
       </div>
     </div>
   </div>

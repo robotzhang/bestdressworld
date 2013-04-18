@@ -1,1 +1,66 @@
 <% content_for(:show_cate_panel, ' show=true style=display:block;') %>
+<div class="container">
+  <div class="box">
+      <div class="slides">
+        <ul class="content clearfix">
+            <li><img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" /></li>
+        </ul>
+
+        <div class="control">
+          <ul class="clearfix">
+            <li class="current" data-index="0">
+                <img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" />
+            </li>
+            <li data-index="1">
+                <img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" />
+            </li>
+            <li data-index="2">
+                <img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" />
+            </li>
+            <li data-index="3">
+                <img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" />
+            </li>
+            <li data-index="4">
+                <img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" />
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <div class="box mt15 padding10">
+    <p>the best <strong>wedding dresses</strong> of the world</p>
+    <div>
+        <img height="310" src="http://s5.mogujie.cn/pic/130416/1tfp1_kqywyscxnjbf6rkugfjeg5sckzsew_145x312.jpg" />
+        <img height="310" src="http://s6.mogujie.cn/pic/130402/hufrf_kqywewc7njbhmv2ugfjeg5sckzsew_145x310.jpg" />
+    </div>
+  </div>
+
+  <div class="box mt15 padding10">
+      <p>the best <strong>colorful dresses</strong> of the world</p>
+      <div>
+          <img height="310" src="http://s9.mogujie.cn/pic/130417/k6k6i_kqyuyocwnjbegs3wgfjeg5sckzsew_150x170.jpg" />
+      </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+      $('.slides .control li').mouseenter(function() {
+          var content = $('.slides .content li');
+          var current = $('.slides .control .current');
+          var $this = $(this);
+          if (current[0] == $this[0]) {
+            return false;
+          }
+          current.animate({'margin-top': '0', 'opacity': 0.5}, function() {
+            current.removeClass('current');
+          });
+          $this.animate({'margin-top': '-18px', 'opacity': 1}, function() {
+            content.hide();
+            content.eq($this.data('index')).fadeIn();
+            $this.addClass('current');
+          });
+      });
+  });
+</script>

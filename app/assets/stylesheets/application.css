@@ -8,7 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree .
+ *= require my_bootstrap
  */
 .mt10 { margin-top: 10px!important; }
 .mt15 { margin-top: 15px!important; }
@@ -23,6 +23,8 @@ body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: 
 
 .header { }
 .header .bottom { background: url(/assets/nav_bottom_bg.png) repeat-x; height: 25px; }
+.header .info-bar { text-align: center; }
+.header .nav-bar { height: 32px; margin-bottom: 1px; border-bottom: 3px #FA649F solid; }
 .header .nav-bar a { line-height: 36px; height: 36px; color: #666; display: block; font-size: 14px; font-weight: bold; float: left; }
 .header .nav-bar a:hover { color: #FA649F; text-decoration: none; }
 .header .nav-bar li { float: left; padding: 0 17px; height: 36px; line-height: 40px; }

@@ -3,7 +3,7 @@
   <div class="box">
       <div class="slides">
         <ul class="content clearfix">
-            <li><img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" /></li>
+            <li class="current"><img src="http://d03.res.meilishuo.net/img/_o/33/2b/781b6b12d5d7d637b4f7da853bb0_640_240.c1.jpg" /></li>
             <li><img src="http://d01.res.meilishuo.net/img/_o/84/ee/ac6411495d349c69b39cead52e7c_640_240.c1.jpg" /></li>
             <li><img src="http://imgtest-lx.meilishuo.net/img/_o/7b/4e/f24e800e81e78aa2ca14c5dde819_640_240.c1.jpg" /></li>
             <li><img src="http://d01.res.meilishuo.net/img/_o/0c/66/f4ab76f4214eed778c154c87c6c6_640_240.c1.jpg" /></li>
@@ -32,16 +32,30 @@
       </div>
   </div>
 
-  <div class="box mt15 padding10">
-    <p>the best <strong>wedding dresses</strong> of the world</p>
+  <div class="box mt15 item-group">
+    <p class="title">the best <a href="#" target="_blank">Wedding Dress</a> of the world</p>
     <div>
         <img height="310" src="http://s5.mogujie.cn/pic/130416/1tfp1_kqywyscxnjbf6rkugfjeg5sckzsew_145x312.jpg" />
         <img height="310" src="http://s6.mogujie.cn/pic/130402/hufrf_kqywewc7njbhmv2ugfjeg5sckzsew_145x310.jpg" />
     </div>
   </div>
 
-  <div class="box mt15 padding10">
-      <p>the best <strong>colorful dresses</strong> of the world</p>
+  <div class="box mt15 item-group">
+      <p class="title">the best <a href="#" target="_blank">Occasion Dresses</a> of the world</p>
+      <div>
+          <img height="310" src="http://s9.mogujie.cn/pic/130417/k6k6i_kqyuyocwnjbegs3wgfjeg5sckzsew_150x170.jpg" />
+      </div>
+  </div>
+
+  <div class="box mt15 item-group">
+      <p class="title">the best <a href="#" target="_blank">Functional Dresses</a> of the world</p>
+      <div>
+          <img height="310" src="http://s9.mogujie.cn/pic/130417/k6k6i_kqyuyocwnjbegs3wgfjeg5sckzsew_150x170.jpg" />
+      </div>
+  </div>
+
+  <div class="box mt15 item-group">
+      <p class="title">the best <a href="#" target="_blank">Colorful Dresses</a> of the world</p>
       <div>
           <img height="310" src="http://s9.mogujie.cn/pic/130417/k6k6i_kqyuyocwnjbegs3wgfjeg5sckzsew_150x170.jpg" />
       </div>
@@ -50,8 +64,10 @@
 
 <script>
   $(document).ready(function() {
-      $('.slides .control li').mouseenter(function() {
-          var content = $('.slides .content li');
+      var auto = true;
+      var control = $('.slides .control li');
+      control.on('mouseenter click', function() {
+          var content = $('.slides .content');
           var current = $('.slides .control .current');
           var $this = $(this);
           if (current[0] == $this[0]) {
@@ -61,10 +77,27 @@
             current.removeClass('current');
           });
           $this.animate({'margin-top': '-18px', 'opacity': 1}, function() {
-            content.hide();
-            content.eq($this.data('index')).fadeIn();
+            if (content.find('li:visible')[0] != content.find('li').eq($this.data('index'))[0]) {
+                content.find('li').hide();
+                content.find('li').eq($this.data('index')).fadeIn();
+            }
             $this.addClass('current');
           });
       });
+      $('.slides').mouseover(function() {
+          auto = false;
+      }).mouseout(function(){
+          auto = true;
+      });
+      //
+      setInterval(function(){
+          var pos = $('.slides .control .current').data('index') + 1;
+          if (pos >= control.length) {
+              pos = 0;
+          }
+          if (auto) {
+              control.eq(pos).click();
+          }
+      }, 5000);
   });
 </script>

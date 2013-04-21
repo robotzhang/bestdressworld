@@ -1,10 +1,8 @@
-<div class="node">
-  <%= category.name %>
-  <% if !category.children.blank? || category.parent_id == 0 %>
-  <span class="actions" style="display: none;">
-      <a title="添加子分类" href="<%= new_admin_category_url(:parent_id => category.id) %>"><i class="icon-plus"></i></a> |
-      <a title="编辑该分类" href="<%= edit_admin_category_url(category) %>"><i class="icon-edit"></i></a> |
-      <a title="删除该分类" data-method="delete" href="<%= admin_category_url(category) %>"><i class="icon-remove"></i></a>
-  </span>
-  <% end %>
-</div>
+<span><%= category.name %></span>
+<% if !category.children.blank? || category.parent_id == 0 %>
+<span class="actions" style="display: none;">
+  <a title="添加子分类" href="<%= new_admin_category_url(:parent_id => category.id) %>"><i class="icon-plus"></i></a> |
+  <a title="编辑该分类" href="<%= edit_admin_category_url(category) %>"><i class="icon-edit"></i></a> |
+  <a title="删除该分类" data-method="delete" href="<%= admin_category_url(category) %>"><i class="icon-remove"></i></a>
+</span>
+<% end %>

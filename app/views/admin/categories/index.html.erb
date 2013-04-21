@@ -1,20 +1,32 @@
-<div class="span5 tree">
+<div class="pull-left tree">
   <div class="node">root <a title="为根分类添加子分类" href="<%= new_admin_category_url(:parent_id => 0) %>"><i class="icon-plus"></i></a></div>
-  <div class="children">
+  <div class="children" id="children0">
     <% @categories.each_with_index do |category, index| %>
       <div class="node-group">
         <div class="node expandable">
           <div class="hitarea"></div><%= render "tree_node", :category => category %>
         </div>
         <% unless category.children.blank? %>
-        <div class="children">
+        <div class="children" id="children<%=category.id%>">
           <% category.children.each do |c| %>
           <div class="node"><%= render "tree_node", :category => c %> </div>
           <% end %>
         </div>
+        <% else %>
+          <div class="children" id="children<%=category.id%>"></div>
         <% end %>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div id="model" class="modal hide">
+  <div class='modal-body'>
+    <div class="modal-body-content"></div>
+    <div class="ajax-loader text-center"><%= image_tag asset_path("loading.gif") %> 正在请求数据...</div>
+  </div>
+  <div class='modal-footer'>
+    <button type="button" data-dismiss="modal" class="btn" onclick="$('#model').hide();">关闭</button>
   </div>
 </div>
 
@@ -24,6 +36,14 @@
             $(this).find('.actions').show();
         }).mouseout(function(){
             $(this).find('.actions').hide();
+        });
+        //
+        $('.actions .add, .actions .edit').click(function() {
+            $('#model').show();
+            $('#model .modal-body-content').load($(this).attr("href"), function(){
+                $('#model .ajax-loader').hide();
+            });
+            return false;
         });
     });
 </script>

@@ -1,7 +1,7 @@
 <div class="mb10">
   为分类 <span class="label label-info"><%= @category.parent.blank? ? 'root' : @category.parent.name %></span> 添加子分类：
 </div>
-<%= form_for [:admin, @category], :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [:admin, @category], :remote => (params[:format] == 'js' ? true : false),:html => { :class => 'form-horizontal' } do |f| %>
     <% if @category.errors.any? %>
     <div>
       <ul class="unstyled well-small alert-error">

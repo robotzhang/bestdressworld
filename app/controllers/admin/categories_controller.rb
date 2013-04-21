@@ -6,15 +6,32 @@ class Admin::CategoriesController < ApplicationController
 
   def new
     @category = Category.new(:parent_id => (params[:parent_id] || 0))
+    respond_to do |format|
+      format.html {render :template => 'admin/categories/new'}
+      format.js { j render :layout => false, :template => 'admin/categories/new' }
+    end
   end
 
   def create
     @category = Category.new(params[:category])
-    @category.save ? redirect_to(:action => :index) : render(:template => 'admin/categories/new')
+    #@category.save ? redirect_to(:action => :index) : render(:template => 'admin/categories/new')
+    respond_to do |format|
+      if @category.save
+        format.html { redirect_to(:action => :index) }
+        format.js
+      else
+        format.html { render action: "new" }
+        format.js
+      end
+    end
   end
 
   def edit
     @category = Category.find(params[:id])
+    respond_to do |format|
+      format.html {render :template => 'admin/categories/edit'}
+      format.js { j render :layout => false, :template => 'admin/categories/edit' }
+    end
   end
 
   def update

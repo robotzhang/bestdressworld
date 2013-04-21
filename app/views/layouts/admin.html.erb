@@ -3,7 +3,9 @@
 <head>
   <title>the best dress of the world admin system!</title>
   <%= stylesheet_link_tag    "admin", :media => "all" %>
+  <%= stylesheet_link_tag params[:controller] %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag params[:controller] %>
   <%= csrf_meta_tags %>
 </head>
 <body>

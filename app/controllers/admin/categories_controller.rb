@@ -14,10 +14,17 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-
+    @category = Category.find(params[:id])
   end
 
   def update
+    @category = Category.find(params[:category][:id])
+    @category.update_attributes(params[:category]) ? redirect_to(:action => :index) : render(:template => 'admin/categories/edit')
+  end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to :action => :index
   end
 end

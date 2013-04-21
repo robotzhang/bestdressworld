@@ -3,13 +3,13 @@
   <div class="children" id="children0">
     <% @categories.each_with_index do |category, index| %>
       <div class="node-group">
-        <div class="node expandable">
+        <div class="node expandable" id="node<%=category.id%>">
           <div class="hitarea"></div><%= render "tree_node", :category => category %>
         </div>
         <% unless category.children.blank? %>
-        <div class="children" id="children<%=category.id%>">
+        <div class="children">
           <% category.children.each do |c| %>
-          <div class="node"><%= render "tree_node", :category => c %> </div>
+          <div class="node" id="node<%=c.id%>"><%= render "tree_node", :category => c %> </div>
           <% end %>
         </div>
         <% else %>

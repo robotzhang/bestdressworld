@@ -1,0 +1,7 @@
+<% if @category.errors.any? %>
+    $('#model .modal-body-content').html("<%= j render :template => 'admin/categories/new' %>");
+    $('#model form').data('remote', true);
+<% else %>
+    $('#model form')[0].reset();
+    $('#node<%=@category.parent_id%>').next('.children').append("<div class='node'  id='node<%=@category.id%>'><%= j render 'tree_node', :category => @category %></div>");
+<% end %>

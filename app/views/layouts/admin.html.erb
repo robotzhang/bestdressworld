@@ -16,7 +16,8 @@
           <a target="_blank" href="<%= root_url %>">网站首页</a>
         </div>
         <ul class="nav nav-tabs" style="padding: 10px 20px; padding-bottom: 0;;">
-          <li<%= ' class=active' if params[:controller] == 'admin/products' %>><a href="<%= url_for(:controller => 'admin/products') %>">产品管理</a></li>
+          <li<%= nav_active('admin/products') %>><a href="<%= url_for(:controller => 'admin/products') %>">产品管理</a></li>
+          <li<%=  nav_active('admin/categories') %>><a href="<%= url_for(:controller => 'admin/categories') %>">分类管理</a></li>
         </ul>
     </div>
     <div style="padding: 10px; padding-top: 0;">

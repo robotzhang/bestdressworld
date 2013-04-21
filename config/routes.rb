@@ -6,5 +6,6 @@ Bestdressworld::Application.routes.draw do
   namespace :admin do |admin|
     resources :products
     get 'amazon' => 'products#amazon'
+    resources :categories
   end
 end

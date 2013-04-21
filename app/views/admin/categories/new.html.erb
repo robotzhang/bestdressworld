@@ -1,5 +1,5 @@
 <div class="mb10">
-  为分类 <span class="label label-info"><%= @category.parent.name %></span> 添加子分类：
+  为分类 <span class="label label-info"><%= @category.parent.blank? ? 'root' : @category.parent.name %></span> 添加子分类：
 </div>
 <%= form_for [:admin, @category], :html => { :class => 'form-horizontal' } do |f| %>
     <% if @category.errors.any? %>

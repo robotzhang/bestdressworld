@@ -8,8 +8,8 @@ class Category < ActiveRecord::Base
   validates_presence_of :url_key, :message => '必须指定分类在url中显示的字符串'
 
   before_validation {
-    if self.url_key.blank?
-      self.url_key = self.name.gsub(/[^\w\s]/, ' ').gsub(' ', '-')
+    if self.url_key.blank? && !self.name.blank?
+      self.url_key = self.name.downcase.gsub(/[^\w\s]/, ' ').gsub(' ', '-')
     end
   }
 end

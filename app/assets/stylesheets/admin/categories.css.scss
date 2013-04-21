@@ -2,4 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .tree {}
+.tree .node-group, .tree .node { background: url(/assets/admin/tree-line.gif) 0 0 no-repeat; }
+.tree .node { padding-left: 16px; }
+.tree .node-group:last-child, .tree .node-group:last-child .node:first-child, .tree .node-group .node:last-child { background-position: 0 -1766px; }
 .tree .children { margin-left: 15px; }

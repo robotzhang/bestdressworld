@@ -8,3 +8,31 @@
   </div>
 </div>
 
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>ASIN</th>
+    <th>产品名称</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @res.items.each do |item| %>
+      <tr>
+        <td><%= item.get('ASIN') %></td>
+        <td>
+          <a href="<%= item.get('DetailPageURL') %>" target="_blank"><%= item.get('ItemAttributes/Title') %></a>
+          <div>
+            <% AmazonAPI.images(item).each do |image| %>
+            <img style="height: 50px;" src="<%= image.url %>" />
+            <% end %>
+          </div>
+        </td>
+        <td>
+          <a href="<%= url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN')) %>"><i class="icon-download-alt"></i> 爬取</a>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

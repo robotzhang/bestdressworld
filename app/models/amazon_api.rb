@@ -3,18 +3,18 @@ class AmazonAPI
     Amazon::Ecs.options = {
         :associate_tag => 'bestdressworld-20', #required when using this version, can be anything (not verified by Amazon
         :AWS_access_key_id => 'AKIAIRZLCIDBLLOW7W3A',
-        :AWS_secret_key => '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'
+        :AWS_secret_key => 'FS/afxrZNYbbcJQAqb/teuHIH/s0ALp8XVbd/e8+',
+        :response_group => 'Images,ItemAttributes,Offers,VariationSummary,EditorialReview,Reviews,SalesRank'
     }
   end
 
   # 搜索产品
-  def self.search(keywords)
-    Amazon::Ecs.item_search(keywords, {:search_index => 'Apparel'})
+  def search(keywords)
+    Amazon::Ecs.item_search(keywords, {:search_index => 'Apparel', :sort => 'salesrank'})
   end
 
   # 获取产品详细信息
-  def get(asin, opts={:ResponseGroup => 'Images,ItemAttributes,Offers,VariationSummary,EditorialReview,Reviews,SalesRank',
-                      :MerchantId => 'All'})
+  def get(asin, opts={:MerchantId => 'All'})
     Amazon::Ecs.item_lookup(asin, opts).first_item
   end
 

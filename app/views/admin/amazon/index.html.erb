@@ -17,7 +17,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @res.items.each do |item| %>
+  <% @items.each do |item| %>
       <tr>
         <td><%= item.get('ASIN') %></td>
         <td>
@@ -29,10 +29,12 @@
           </div>
         </td>
         <td>
-          <a href="<%= url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN')) %>"><i class="icon-download-alt"></i> 爬取</a>
+          <a target="_blank" href="<%= url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN')) %>"><i class="icon-download-alt"></i> 爬取</a>
         </td>
       </tr>
   <% end %>
   </tbody>
 </table>
+
+<%= paginate(@items, :theme => 'bootstrap') %>
 

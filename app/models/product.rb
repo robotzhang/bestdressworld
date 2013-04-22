@@ -2,7 +2,7 @@
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
-  has_many :images, :as => :imageable
+  has_many :images, :as => :imageable, :order => '`order` ASC'
   has_one :description, :dependent => :destroy
   has_one :discount, :dependent => :destroy
 

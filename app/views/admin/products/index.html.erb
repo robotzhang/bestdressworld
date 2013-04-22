@@ -34,7 +34,14 @@
   <tr>
     <td><%= product.id %></td>
     <td><%= product.asin %></td>
-    <td><%= product.name %></td>
+    <td>
+      <%= product.name %>
+      <div>
+        <% product.images.each do |image| %>
+            <img style="height: 50px;" src="<%= image.url %>" />
+        <% end %>
+      </div>
+    </td>
     <td><%= product.currency %> <strong><%= product.discount.sale_price %></strong> / <%= product.price %></td>
     <td><%= product.created_at.to_date %></td>
     <td>

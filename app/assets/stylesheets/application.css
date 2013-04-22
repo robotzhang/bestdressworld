@@ -47,6 +47,6 @@ body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: 
 #col_3 { margin-right: 0; }
 .waterfall .col .item { width: 228px; position: relative; margin-bottom: 20px;  }
 .waterfall .col .bg { overflow: hidden; width: 225px; padding-right: 3px; border-radius: 5px 10px 0 0; background: url(/assets/wall_bg_shadow.png); }
-.waterfall .col .item .pic img { display: block; }
+.waterfall .col .item .pic { background-color: #fff; text-align: center; }
 .waterfall .col .item .content { padding: 10px 9px 5px 8px; background-color: #fff; line-height: 19px; }
 .waterfall .col .ft { box-shadow: 2px 3px 4px #ddd; width: 225px; height: 5px; border-radius: 0 0 5px 5px;  background-color: #fff; margin-top: -1px; font-size: 0; }

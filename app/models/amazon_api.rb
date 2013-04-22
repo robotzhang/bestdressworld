@@ -7,6 +7,12 @@ class AmazonAPI
     }
   end
 
+  # 搜索产品
+  def self.search(keywords)
+    Amazon::Ecs.item_search(keywords, {:search_index => 'Apparel'})
+  end
+
+  # 获取产品详细信息
   def get(asin, opts={:ResponseGroup => 'Images,ItemAttributes,Offers,VariationSummary,EditorialReview,Reviews,SalesRank',
                       :MerchantId => 'All'})
     Amazon::Ecs.item_lookup(asin, opts).first_item

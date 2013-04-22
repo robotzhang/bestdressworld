@@ -4,8 +4,9 @@ Bestdressworld::Application.routes.draw do
   get 'products/:seo_url' => 'products#show'
   resources :products
   namespace :admin do |admin|
+    get 'products/amazon' => 'products#amazon'
     resources :products
-    get 'amazon' => 'products#amazon'
+    resources :amazon
     resources :categories
   end
 end

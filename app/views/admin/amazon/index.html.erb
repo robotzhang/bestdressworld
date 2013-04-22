@@ -1,0 +1,10 @@
+<div class="mb10">
+  <div class="input-prepend input-append mb0">
+    <form class="mb0" method="get" action="<%= url_for(:controller => 'admin/amazon', :action => 'index') %>">
+      <span class="add-on">关键词</span>
+      <input type="text" name="keywords" value="<%= params[:keywords] %>"/>
+      <button class="btn" type="submit">搜索</button>
+    </form>
+  </div>
+</div>
+

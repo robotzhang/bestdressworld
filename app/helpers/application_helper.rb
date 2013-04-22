@@ -4,7 +4,8 @@ module ApplicationHelper
   end
 
   def nav_active(controller=nil, action=nil)
-    return ' class=active' if params[:controller] == controller || (action == 'homepage' && params[:controller] == 'application')
+    arr = controller.is_a?(Array) ? controller : [controller]
+    return ' class=active' if arr.include?(params[:controller]) || (action == 'homepage' && params[:controller] == 'application')
     ''
   end
 end

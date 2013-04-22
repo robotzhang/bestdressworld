@@ -1,8 +1,9 @@
 <div class="item">
   <div class="bg">
-    <div class="pic">
+    <% hw = image_height_width(product.images[0], 255) %>
+    <div class="pic" style="height: <%=hw[:height]%>px;">
       <a href="<%= product_url(product.seo_url) %>" target="_blank">
-        <%= render_image(product.images[0]) %>
+        <img style="height: <%=hw[:height]%>px; width: <%=hw[:width]%>px;" alt="<%=product.name + '_0'%>" title="<%=product.name + '_0'%>" src="<%=product.images[0].url%>"/>
       </a>
     </div>
     <div class="content">

@@ -17,3 +17,6 @@
 .padding10 { padding: 10px; }
 .padding20 { padding: 20px; }
 .hide { display: none; }
+
+.images li { float: left; margin-left: 5px; text-align: center;  border: #ccc 1px solid; padding: 2px; }
+.images img { height: 50px; }

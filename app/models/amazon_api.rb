@@ -25,11 +25,12 @@ class AmazonAPI
   def self.images(item, size='LargeImage')
     images = []
     arrs = item.get_elements('ImageSets/ImageSet/' + size)
-    arrs.each do |arr|
+    arrs.each_with_index do |arr, index|
       image = Image.new
       image.url = arr.get('URL')
       image.width = arr.get('Width')
       image.height = arr.get('Height')
+      image.order = index + 1
       images << image
     end
 

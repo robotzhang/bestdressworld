@@ -1,0 +1,9 @@
+<% provide(:javascript, javascript_include_tag('admin/images')) %>
+<ul class="images unstyled">
+  <% images.each do |image| %>
+      <% hw = image_width_height(image, 50) %>
+      <li style="width: <%= hw[:width] > 50 ? hw[:width] : 50%>px;">
+        <img id="image_<%=image.id%>" data-id="<%=image.id%>" style="width: <%=hw[:width]%>px;height: <%=hw[:height]%>px;" src="<%= image.url %>" />
+      </li>
+  <% end %>
+</ul>

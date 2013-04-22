@@ -8,5 +8,6 @@ Bestdressworld::Application.routes.draw do
     resources :products
     resources :amazon
     resources :categories
+    resources :images
   end
 end

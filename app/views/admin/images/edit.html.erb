@@ -1,0 +1,23 @@
+<%= form_for [:admin, @image], :html => { :class => 'form-horizontal', :remote => (params[:format] == 'js' ? true : false) } do |f| %>
+    <legend>
+      编辑图片：
+    </legend>
+    <% if @image.errors.any? %>
+        <div>
+          <ul class="unstyled well-small alert-error">
+            <% for message in @image.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="control-group">
+      <%= f.label :order, :class => "control-label" %>
+      <div class="controls">
+        <%= f.select :order, (1..(params[:count] || 10).to_i).map{|i| i} %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit '提交', :class => 'btn btn-primary' %>
+    </div>
+<% end %>

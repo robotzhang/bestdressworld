@@ -1,0 +1,6 @@
+var img = $('#image_<%=@image.id%>');
+var insert_to = img.parents('.images').find('li').eq(<%=@image.order-1%>);
+if (img.parents('li')[0] != insert_to[0]) {
+    img.parents('li').insertBefore(insert_to);
+}
+$('#modal').hide();

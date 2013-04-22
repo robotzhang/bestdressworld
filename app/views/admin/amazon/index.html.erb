@@ -22,11 +22,7 @@
         <td><%= item.get('ASIN') %></td>
         <td>
           <a href="<%= item.get('DetailPageURL') %>" target="_blank"><%= item.get('ItemAttributes/Title') %></a>
-          <div>
-            <% AmazonAPI.images(item).each do |image| %>
-            <img style="height: 50px;" src="<%= image.url %>" />
-            <% end %>
-          </div>
+          <%= render 'admin/images/list', :images=>AmazonAPI.images(item) %>
         </td>
         <td>
           <a target="_blank" href="<%= url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN')) %>"><i class="icon-download-alt"></i> 爬取</a>
@@ -36,5 +32,5 @@
   </tbody>
 </table>
 
-<%= paginate(@items, :theme => 'bootstrap') %>
+<%= paginate(@items, :theme => 'bootstrap') unless @items.blank? %>
 

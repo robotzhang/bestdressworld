@@ -18,7 +18,7 @@
   <a class="btn" href="<%= admin_amazon_index_url %>">Amazon!</a>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="products">
   <thead>
   <tr>
     <th>ID</th>
@@ -36,11 +36,7 @@
     <td><%= product.asin %></td>
     <td>
       <%= product.name %>
-      <div>
-        <% product.images.each do |image| %>
-            <img style="height: 50px;" src="<%= image.url %>" />
-        <% end %>
-      </div>
+      <%= render 'admin/images/list', :images=>product.images %>
     </td>
     <td><%= product.currency %> <strong><%= product.discount.sale_price %></strong> / <%= product.price %></td>
     <td><%= product.created_at.to_date %></td>
@@ -55,3 +51,10 @@
 </table>
 
 <%= paginate @products, :theme => 'bootstrap' %>
+
+<div id="modal" class="modal hide">
+  <div class='modal-body'>
+    <div class="modal-body-content"></div>
+    <div class="ajax-loader text-center"><%= image_tag asset_path("loading.gif") %> 正在请求数据...</div>
+  </div>
+</div>

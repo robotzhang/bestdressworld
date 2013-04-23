@@ -25,6 +25,7 @@ class AmazonAPI
   def self.images(item, size='LargeImage')
     images = []
     arrs = item.get_elements('ImageSets/ImageSet/' + size)
+    return images if arrs.blank?
     arrs.each_with_index do |arr, index|
       image = Image.new
       image.url = arr.get('URL')

@@ -1,4 +1,4 @@
-<ul class="images unstyled">
+<ul class="images unstyled clearfix">
   <% images.each do |image| %>
       <% hw = image_width_height(image, 50) %>
       <li style="width: <%= hw[:width] > 50 ? hw[:width] : 50%>px;">

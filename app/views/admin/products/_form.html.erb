@@ -38,9 +38,12 @@
 
         <div style="border-top: 2px red solid; margin: 0 0 10px 30px;"></div>
 
-        <%= f.fields_for :images do |builder| %>
+        <div style="margin-left: 30px;"><%= render "admin/images/list", :images => @product.images %></div>
+        <div class="hide">
+          <%= f.fields_for :images do |builder| %>
             <%= render "image_fields", :f => builder %>
-        <% end %>
+          <% end %>
+        </div>
     </div>
 
     <div class="pull-left">

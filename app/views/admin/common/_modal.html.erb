@@ -1,0 +1,7 @@
+<div id="modal" class="modal hide">
+  <div style="margin: 5px 10px 0 0;"><button title="关闭" onclick="$('#modal').hide();" class="close">&times;</button></div>
+  <div class='modal-body'>
+    <div class="modal-body-content"></div>
+    <div class="ajax-loader text-center"><%= image_tag asset_path("loading.gif") %> 正在请求数据...</div>
+  </div>
+</div>

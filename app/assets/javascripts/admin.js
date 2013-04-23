@@ -13,15 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 
-$(document).ready(function() {
-  $('.nav-bar .find, #cate-panel').mouseover(function(){
-    $('#cate-panel').css({
-        left: $('.nav-bar .find a').offset().left
-    }).show();
-  }).mouseout(function() {
-    if ($('#cate-panel').attr('show') == 'true') {
-      return false;
+var util = {
+    modal: function(url) {
+        $('#modal .ajax-loader').show();
+        $('#modal .modal-body-content').load(url, function() {
+            $('#modal .ajax-loader').hide();
+        });
+        $('#modal').show();
     }
-    $('#cate-panel').hide();
-  });
-});
+}

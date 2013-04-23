@@ -36,6 +36,7 @@
     <td><%= product.asin %></td>
     <td>
       <%= product.name %>
+      <% provide(:javascript, javascript_include_tag('admin/images')) %>
       <%= render 'admin/images/list', :images=>product.images %>
     </td>
     <td><%= product.currency %> <strong><%= product.discount.sale_price %></strong> / <%= product.price %></td>
@@ -52,9 +53,4 @@
 
 <%= paginate @products, :theme => 'bootstrap' %>
 
-<div id="modal" class="modal hide">
-  <div class='modal-body'>
-    <div class="modal-body-content"></div>
-    <div class="ajax-loader text-center"><%= image_tag asset_path("loading.gif") %> 正在请求数据...</div>
-  </div>
-</div>
+<%= render "admin/common/modal" %>

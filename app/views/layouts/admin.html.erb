@@ -4,8 +4,10 @@
   <title>the best dress of the world admin system!</title>
   <%= stylesheet_link_tag    "admin", :media => "all" %>
   <%= stylesheet_link_tag params[:controller] %>
-  <%= javascript_include_tag "application" %>
+  <%= yield(:stylesheet) %>
+  <%= javascript_include_tag "admin" %>
   <%= javascript_include_tag params[:controller] %>
+  <%= yield(:javascript) %>
   <%= csrf_meta_tags %>
 </head>
 <body>

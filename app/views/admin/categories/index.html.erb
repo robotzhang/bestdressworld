@@ -20,15 +20,7 @@
   </div>
 </div>
 
-<div id="model" class="modal hide">
-  <div class='modal-body'>
-    <div class="modal-body-content"></div>
-    <div class="ajax-loader text-center"><%= image_tag asset_path("loading.gif") %> 正在请求数据...</div>
-  </div>
-  <div class='modal-footer'>
-    <button type="button" data-dismiss="modal" class="btn" onclick="$('#model').hide();">关闭</button>
-  </div>
-</div>
+<%= render "admin/common/modal" %>
 
 <script>
     $(document).ready(function() {
@@ -39,10 +31,7 @@
         });
         //
         $('.actions .add, .actions .edit').click(function() {
-            $('#model').show();
-            $('#model .modal-body-content').load($(this).attr("href"), function(){
-                $('#model .ajax-loader').hide();
-            });
+            util.modal($(this).attr("href"));
             return false;
         });
     });

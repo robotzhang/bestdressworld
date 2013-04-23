@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
     product = Product.new
     product.asin = item.get('ASIN')
     product.sku = item.get('ItemAttributes/SKU')
-    product.name = item.get('ItemAttributes/Title')
+    product.name = sanitize(CGI.unescapeHTML(item.get('ItemAttributes/Title')))
     product.sales_rank = item.get('SalesRank')
     product.publisher = item.get('ItemAttributes/Publisher')
     product.studio = item.get('ItemAttributes/Studio')

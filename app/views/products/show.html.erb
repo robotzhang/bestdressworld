@@ -20,7 +20,7 @@
          </div>
         </div>
         <div class="mt10" style="line-height: 19px;">
-          <%= simple_format(@product.description.content) %>
+          <%= simple_format(sanitize(CGI.unescapeHTML(@product.description.content), :tags => %w(br))) %>
         </div>
       </div>
 

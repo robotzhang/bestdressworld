@@ -19,14 +19,15 @@ class Product < ActiveRecord::Base
     product = Product.new
     product.asin = item.get('ASIN')
     product.sku = item.get('ItemAttributes/SKU')
-    product.name = sanitize(CGI.unescapeHTML(item.get('ItemAttributes/Title')))
+    product.name = sanitize(CGI.unescapeHTML(item.get('ItemAttributes/Title'))).squeeze(" ")
+    product.name = product.name[1..(product.name.size-2)]
     product.sales_rank = item.get('SalesRank')
     product.publisher = item.get('ItemAttributes/Publisher')
     product.studio = item.get('ItemAttributes/Studio')
     product.from_url = item.get('DetailPageURL')
     product.buy_url = 'http://www.amazon.com/gp/product/' + product.asin + '?tag=' + 'bestdressworld-20'
     product.from_site = 'amazon'
-    product.seo_url = product.name.gsub(/[^\w\s]/, ' ').gsub(' ', '-').downcase unless product.name.blank?
+    product.seo_url = product.name.gsub(/[^\w\s]/, ' ').squeeze(" ").strip.gsub(' ', '-').downcase unless product.name.blank?
     # get price
     price = AmazonAPI.get_price(item)
     product.price = price[:price]

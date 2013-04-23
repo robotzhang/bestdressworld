@@ -13,6 +13,7 @@
   <tr>
     <th>ASIN</th>
     <th>产品名称</th>
+    <th>价格</th>
     <th>操作</th>
   </tr>
   </thead>
@@ -23,6 +24,11 @@
         <td>
           <a href="<%= item.get('DetailPageURL') %>" target="_blank"><%= item.get('ItemAttributes/Title') %></a>
           <%= render 'admin/images/list', :images=>AmazonAPI.images(item) %>
+        </td>
+        <td>
+          <%= AmazonAPI.get_price(item)[:currency] %>
+          <%= AmazonAPI.get_price(item)[:price] %> /
+          <%= AmazonAPI.get_price(item)[:sale_price] %>
         </td>
         <td>
           <% spide_url = url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN'), :ret_url => URI.encode(request.url)) %>

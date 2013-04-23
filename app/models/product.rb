@@ -20,6 +20,7 @@ class Product < ActiveRecord::Base
     product.asin = item.get('ASIN')
     product.sku = item.get('ItemAttributes/SKU')
     product.name = item.get('ItemAttributes/Title')
+    product.sales_rank = item.get('SalesRank')
     product.publisher = item.get('ItemAttributes/Publisher')
     product.studio = item.get('ItemAttributes/Studio')
     product.from_url = item.get('DetailPageURL')

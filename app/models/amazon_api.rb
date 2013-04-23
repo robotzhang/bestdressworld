@@ -61,7 +61,7 @@ class AmazonAPI
       sale = self.format_price(item.get_elements('VariationSummary/LowestSalePrice'))
       price[:sale_price] = sale[:price]
       if price[:sale_price] == 0
-        lowest = item.get_elements('VariationSummary/LowestPrice')
+        lowest = self.format_price(item.get_elements('VariationSummary/LowestPrice'))
         price[:sale_price] = lowest[:price]
       end
     end

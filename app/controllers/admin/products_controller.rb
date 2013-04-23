@@ -14,7 +14,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(params[:product])
-    @product.save ? redirect_to(:action => :index) : render(:template => 'admin/products/_form')
+    if @product.save
+      params[:ret_url].blank? ? redirect_to(:action => :index) : redirect_to(params[:ret_url], :asin => @product.asin)
+    else
+      render(:template => 'admin/products/_form')
+    end
   end
 
   def edit

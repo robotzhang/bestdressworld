@@ -25,7 +25,8 @@
           <%= render 'admin/images/list', :images=>AmazonAPI.images(item) %>
         </td>
         <td>
-          <a target="_blank" href="<%= url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN')) %>"><i class="icon-download-alt"></i> 爬取</a>
+          <% spide_url = url_for(:controller => 'admin/products', :action => 'amazon', :asin=>item.get('ASIN'), :ret_url => URI.encode(request.url)) %>
+          <a target="_blank" href="<%= spide_url %>"><i class="icon-download-alt"></i> 爬取</a>
         </td>
       </tr>
   <% end %>

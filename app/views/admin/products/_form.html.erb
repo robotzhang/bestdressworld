@@ -14,6 +14,7 @@
     <% end %>
 
     <%= f.hidden_field :id %>
+    <input type="hidden" name="ret_url" value="<%=params[:ret_url]%>"/>
 
     <div class="pull-left">
         <% @product.attributes.each do |key, value| %>

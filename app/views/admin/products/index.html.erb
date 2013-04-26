@@ -24,8 +24,8 @@
     <th>ID</th>
     <th>ASIN</th>
     <th>产品名称</th>
-    <th>折扣/原价</th>
-    <th>创建时间</th>
+    <th>分类</th>
+    <th>综合信息</th>
     <th>操作</th>
   </tr>
   </thead>
@@ -39,8 +39,17 @@
       <% provide(:javascript, javascript_include_tag('admin/images')) %>
       <%= render 'admin/images/list', :images=>product.images %>
     </td>
-    <td><%= product.currency %> <strong><%= product.discount.sale_price %></strong> / <%= product.price %></td>
-    <td><%= product.created_at.to_date %></td>
+    <td>
+      <% product.categories.each do |category| %>
+      <div><%= category.name %></div>
+      <% end %>
+      <%=render_category_select%>
+      <a class="btn btn-mini add-category" data-id="<%=product.id%>" href="<%= url_for(:controller => 'admin/products', :action => 'create_category') %>">添加分类</a>
+    </td>
+    <td>
+      <div><strong><%= product.discount.sale_price %></strong> / <%= product.price %></div>
+      <div><%= product.created_at.to_date %></div>
+    </td>
     <td>
       <a href="<%= edit_polymorphic_url([:admin, product]) %>"><i class="icon-edit"></i>编辑</a>
       <p></p>

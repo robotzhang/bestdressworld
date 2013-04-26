@@ -5,6 +5,7 @@ Bestdressworld::Application.routes.draw do
   resources :products
   namespace :admin do |admin|
     get 'products/amazon' => 'products#amazon'
+    post 'products/create_category' => 'products#create_category'
     resources :products
     resources :amazon
     resources :categories

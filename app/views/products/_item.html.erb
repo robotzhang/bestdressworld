@@ -8,6 +8,10 @@
     </div>
     <div class="content">
       <%= product.name.downcase %>
+      <div class="price">
+        <span style="text-decoration:line-through;">$<%= product.discount.price %></span>
+        <strong>$<%=product.discount.sale_price%></strong>
+      </div>
     </div>
   </div>
   <div class="ft"></div>

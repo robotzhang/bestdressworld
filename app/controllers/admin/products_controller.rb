@@ -28,4 +28,15 @@ class Admin::ProductsController < ApplicationController
   def update
 
   end
+
+  def create_category
+    cp = CategoriesProduct.new(params[:cp])
+    p '='*100
+    p cp
+    respond_to do |format|
+      if cp.save
+        format.js { render :js => "alert('成功鸟!')" }
+      end
+    end
+  end
 end

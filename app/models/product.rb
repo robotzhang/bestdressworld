@@ -34,7 +34,7 @@ class Product < ActiveRecord::Base
     product.price = price[:price]
     product.currency = price[:currency]
     # set discount
-    unless price[:sale_price].blank?
+    if !price[:sale_price].blank? && price[:sale_price] > 0
       product.discount = Discount.new(
           :price => product.price,
           :sale_price => price[:sale_price]
@@ -46,5 +46,13 @@ class Product < ActiveRecord::Base
     product.images = AmazonAPI.images(item)
 
     product
+  end
+
+  def self.colors
+    %w(black white red golden ivory wine pink)
+  end
+
+  def self.fabrics
+    %w(chiffon organza taffeta satin stretch\ satin stretch\ silk-like\ satin lace tulle sequins)
   end
 end

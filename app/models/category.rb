@@ -12,13 +12,15 @@ class Category < ActiveRecord::Base
   def self.tree
     nodes = Hash.new
     self.order('parent_id ASC').all.each do |category|
+      is_parent = true
       nodes.each do |parent, children|
         if (parent.id == category.parent_id)
           nodes[parent] << { category => [] }
+          is_parent = false
           break
         end
       end
-      nodes[category] = []
+      nodes[category] = [] if is_parent
     end
 
     nodes

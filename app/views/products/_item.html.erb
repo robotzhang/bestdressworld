@@ -9,8 +9,10 @@
     <div class="content">
       <%= product.name.downcase %>
       <div class="price">
-        <span style="text-decoration:line-through;">$<%= product.discount.price %></span>
+        <span style="text-decoration:line-through;">$<%= product.price %></span>
+        <% if !product.discount.blank? && product.discount.sale_price > 0 %>
         <strong>$<%=product.discount.sale_price%></strong>
+        <% end %>
       </div>
     </div>
   </div>

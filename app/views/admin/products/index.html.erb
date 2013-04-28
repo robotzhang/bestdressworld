@@ -21,32 +21,48 @@
 <table class="table table-bordered table-striped" id="products">
   <thead>
   <tr>
-    <th>ID</th>
-    <th>ASIN</th>
     <th>产品名称</th>
-    <th>分类</th>
-    <th>综合信息</th>
-    <th>操作</th>
+    <th>颜色/材料</th>
+    <th width="120">综合信息</th>
+    <th width="60">操作</th>
   </tr>
   </thead>
   <tbody>
   <% @products.each do |product| %>
   <tr>
-    <td><%= product.id %></td>
-    <td><%= product.asin %></td>
     <td>
       <%= product.name %>
       <% provide(:javascript, javascript_include_tag('admin/images')) %>
       <%= render 'admin/images/list', :images=>product.images %>
+      <div class="cates">
+        <% product.categories.each do |category| %>
+            <a class="label label-important" href="javascript:void(0);">
+              <%= category.name %><button title="移除该分类" onclick="" class="close">×</button>
+            </a>
+        <% end %>
+        <%=render_category_select%>
+        <a class="btn btn-mini add-category" data-id="<%=product.id%>" href="<%= url_for(:controller => 'admin/products', :action => 'create_category') %>">添加分类</a>
+      </div>
     </td>
     <td>
-      <% product.categories.each do |category| %>
-      <div><%= category.name %></div>
-      <% end %>
-      <%=render_category_select%>
-      <a class="btn btn-mini add-category" data-id="<%=product.id%>" href="<%= url_for(:controller => 'admin/products', :action => 'create_category') %>">添加分类</a>
+      <div>
+        <div>color:<%=product.color%></div>
+        <div>
+          <select name="color" style="width: 90px;"><% Product.colors.each do |color|%><option><%=color%></option><% end %></select>
+          <a title="确定" href="javascript:void(0);"><i class="icon-ok-sign"></i></a>
+        </div>
+      </div>
+      <div>
+        <div>fabric:<%=product.fabric%></div>
+        <div>
+          <select name="fabric" style="width: 90px; margin: 0;"><% Product.fabrics.each do |fabric|%><option><%=fabric%></option><% end %></select>
+          <a title="确定" href="javascript:void(0);"><i class="icon-ok-sign"></i></a>
+        </div>
+      </div>
     </td>
     <td>
+      <div>id:<%= product.id %></div>
+      <div>asin:<strong><%= product.asin %></strong></div>
       <div><strong><%= product.discount.sale_price %></strong> / <%= product.price %></div>
       <div><%= product.created_at.to_date %></div>
     </td>

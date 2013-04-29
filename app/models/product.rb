@@ -68,4 +68,22 @@ class Product < ActiveRecord::Base
         '$'
     end
   end
+
+  def get_seo_title
+    return self.seo_title if !self.seo_title.blank?
+    self.name.downcase+" - #{self.currency} #{self.currency_symbol} #{self.price.to_s}"
+  end
+
+  def get_seo_keywords
+    return self.seo_keywords if !self.seo_keywords
+    self.categories.map {|c| c.name}.join(' ') if !self.categories.blank?
+    ""
+  end
+
+  def get_seo_description
+    return self.seo_description if !self.seo_descriptions
+    prefix = self.get_seo_keywords
+    prefix += prefix+", "if !prefix.blank?
+    "find the best #{prefix}#{self.name.downcase} of the world from bestdressworld.com, buy from #{self.from_site}! "
+  end
 end

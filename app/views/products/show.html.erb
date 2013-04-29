@@ -13,7 +13,7 @@
          <p><a title="<%= @product.name %>" style="text-decoration: underline; color: #333;" target="_blank" href="<%= @product.buy_url %>"><%= @product.name[0, 45] + '...' %></a></p>
          <p>
            <span style="text-decoration: line-through;">$<%= @product.price %></span>
-           <span style="font-size: 20px; color: #000;">$<%= @product.discount.sale_price %></span>
+           <span style="font-size: 20px; color: #000;">$<%= @product.discount.sale_price if !@product.discount.blank? %></span>
          </p>
          <div class="pull-right" style="position: absolute;top: 20px; left: 350px;">
            <a target="_blank" class="btn btn-large" href="<%= @product.buy_url %>">Buy!</a>

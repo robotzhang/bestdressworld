@@ -63,7 +63,7 @@
     <td>
       <div>id:<%= product.id %></div>
       <div>asin:<strong><%= product.asin %></strong></div>
-      <div><strong><%= product.discount.sale_price %></strong> / <%= product.price %></div>
+      <div><strong><%= product.discount.sale_price if !product.discount.blank? %></strong> / <%= product.price %></div>
       <div><%= product.created_at.to_date %></div>
     </td>
     <td>

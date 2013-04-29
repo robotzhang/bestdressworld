@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :description, :discount
 
+  before_save do
+    self.discount = nil unless self.discount.sale_price > 0
+  end
+
   def self.get_amazon(asin)
     AmazonAPI.new.get(asin)
     self.to_product(AmazonAPI.new.get(asin))
@@ -34,7 +38,7 @@ class Product < ActiveRecord::Base
     product.price = price[:price]
     product.currency = price[:currency]
     # set discount
-    if !price[:sale_price].blank? && price[:sale_price] > 0
+    if !price[:sale_price].blank?
       product.discount = Discount.new(
           :price => product.price,
           :sale_price => price[:sale_price]

@@ -1,6 +1,6 @@
 <% provide(:title, @product.get_seo_title) %>
 <% provide(:keywords, @product.get_seo_keywords) %>
-<% provide(:description, @product.get_seo_description) %>
+<% provide(:description, @product.get_seo_description(request.domain)) %>
 
 <div class="container box" style="border: #DCDCDC 1px solid;">
   <div class="row">

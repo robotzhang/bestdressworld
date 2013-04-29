@@ -80,10 +80,10 @@ class Product < ActiveRecord::Base
     ""
   end
 
-  def get_seo_description
+  def get_seo_description(domain="bestdressworld.com")
     return self.seo_description if !self.seo_descriptions
     prefix = self.get_seo_keywords
     prefix += prefix+", "if !prefix.blank?
-    "find the best #{prefix}#{self.name.downcase} of the world from bestdressworld.com, buy from #{self.from_site}! "
+    "find the best #{prefix}#{self.name.downcase} of the world from #{domain}, buy from #{self.from_site}! "
   end
 end

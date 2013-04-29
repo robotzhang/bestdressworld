@@ -1,3 +1,7 @@
+<% provide(:title, @product.name.downcase+" - #{@product.currency} #{@product.currency_symbol} #{@product.price.to_s}") %>
+<% provide(:keywords, @product.categories.map {|c| c.name}.join(' ')) if !@product.categories.blank? %>
+<% provide(:description, 'find the best '+@product.categories.map {|c| c.name}.join(' ')+', ' +@product.name.downcase+' of the world from bestdressworld.com, buy from amazon! ') %>
+
 <div class="container box" style="border: #DCDCDC 1px solid;">
   <div class="row">
     <div class="span6" style="background-color: #FBFBFB; border-radius: 5px 0 0 5px;">

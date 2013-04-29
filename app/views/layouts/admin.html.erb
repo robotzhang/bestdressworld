@@ -19,10 +19,15 @@
           -
           <a target="_blank" href="<%= root_url %>">网站首页</a>
         </div>
-        <ul class="nav nav-tabs" style="padding: 10px 20px; padding-bottom: 0;;">
+        <ul class="nav nav-tabs" style="padding: 10px 20px; padding-bottom: 0; margin: 10px;">
           <li<%= nav_active(['admin/products', 'admin/amazon']) %>><a href="<%= url_for(:controller => 'admin/products') %>">产品管理</a></li>
           <li<%= nav_active('admin/categories') %>><a href="<%= url_for(:controller => 'admin/categories') %>">分类管理</a></li>
         </ul>
+        <div style="padding-left: 30px; margin-bottom: 20px; border-bottom: #ccc 1px solid; padding-bottom: 10px;">
+          <% if ['admin/products', 'admin/amazon'].include?(params[:controller]) %>
+          <a class="btn" href="<%= admin_amazon_index_url %>">amazon!</a>
+          <% end %>
+        </div>
     </div>
     <div style="padding: 10px; padding-top: 0;" class="clearfix">
       <%= yield %>

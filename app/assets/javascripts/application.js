@@ -14,10 +14,15 @@
 //= require jquery_ujs
 
 $(document).ready(function() {
-  $('.nav-bar .find, #cate-panel').mouseover(function(){
+  function set_cate_panel_position() {
     $('#cate-panel').css({
         left: $('.nav-bar .find a').offset().left
-    }).show();
+    });
+    return $('#cate-panel');
+  }
+  set_cate_panel_position().show();
+  $('.nav-bar .find, #cate-panel').mouseover(function(){
+    set_cate_panel_position().show();
   }).mouseout(function() {
     if ($('#cate-panel').attr('show') == 'true') {
       return false;

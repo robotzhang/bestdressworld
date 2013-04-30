@@ -57,7 +57,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.fabrics
-    %w(chiffon organza taffeta satin stretch\ satin stretch\ silk-like\ satin lace tulle sequins)
+    %w(silk chiffon organza taffeta satin stretch\ satin stretch\ silk-like\ satin lace tulle sequins)
   end
 
   def currency_symbol

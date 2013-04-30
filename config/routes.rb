@@ -5,6 +5,13 @@ Bestdressworld::Application.routes.draw do
   resources :products do
     get 'page/:page', :action => :index, :on => :collection
   end
+
+  match '/signup' => 'users#new'
+  match '/login' => 'sessions#new'
+  match '/logout' =>  'sessions#destroy'
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
   namespace :admin do |admin|
     get 'products/amazon' => 'products#amazon'
     post 'products/create_category' => 'products#create_category'

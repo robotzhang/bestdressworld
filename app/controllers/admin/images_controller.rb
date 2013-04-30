@@ -1,4 +1,7 @@
 class Admin::ImagesController < ApplicationController
+  before_filter do |controller|
+    controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})
+  end
   layout 'admin'
   def index
     @images = Image.where({:imageable_type=>params[:imageable_type], :imageable_id => params[:imageable_id]}).order(:order).all

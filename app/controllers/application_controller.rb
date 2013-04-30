@@ -1,6 +1,7 @@
 #coding=utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
   def homepage
     render :template => 'homepage'
   end
@@ -23,8 +24,15 @@ class ApplicationController < ActionController::Base
     true
   end
 
-  # 当前登录用户
+  private
   def current_user
-    session[:user]
+    @current_user ||= session[:user] if session[:user]
+    @current_user ||= User.find_by_auth_token!(cookies[:remember_token]) if cookies[:remember_token]
   end
+
+  def signed_in?
+    !current_user.nil?
+  end
+
+  helper_method :current_user, :signed_in?
 end

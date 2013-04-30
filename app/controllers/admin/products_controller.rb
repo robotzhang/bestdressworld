@@ -1,5 +1,8 @@
 #coding=utf-8
 class Admin::ProductsController < ApplicationController
+  before_filter do |controller|
+    controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})
+  end
   layout 'admin'
   def index
     @products = Product.order(:id).includes([:discount, :images]).page(params[:page]).per(10)

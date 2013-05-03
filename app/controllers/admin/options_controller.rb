@@ -27,7 +27,7 @@ class Admin::OptionsController < ApplicationController
 
   def update
     @option = Option.find(params[:id])
-    @option.update_attributes(params[:option]) ? redirect_to(:action => :index) : render(:template => 'admin/options/form')
+    @option.update_attributes(params[:option]) ? redirect_to(:action => :index, :group => @option.group) : render(:template => 'admin/options/form')
   end
 
   def destroy

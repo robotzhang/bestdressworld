@@ -35,4 +35,9 @@ class Admin::OptionsController < ApplicationController
     @option.destroy
     redirect_to :action => :index
   end
+
+  def create_for_product
+    @product = Product.find(params[:product_id])
+    @options = Option.data
+  end
 end

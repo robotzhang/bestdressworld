@@ -20,7 +20,7 @@
   <thead>
   <tr>
     <th>产品名称</th>
-    <th>颜色/材料</th>
+    <th>options</th>
     <th width="120">综合信息</th>
     <th width="60">操作</th>
   </tr>
@@ -29,7 +29,7 @@
   <% @products.each do |product| %>
   <tr>
     <td>
-      <%= highlight(product.name.downcase, Product.colors + Product.fabrics) %>
+      <%= product.name.downcase %>
       <% provide(:javascript, javascript_include_tag('admin/images')) %>
       <%= render 'admin/images/list', :images=>product.images %>
       <div class="cates">
@@ -43,20 +43,7 @@
       </div>
     </td>
     <td>
-      <div>
-        <div>color:<%=product.color%></div>
-        <div>
-          <select name="color" style="width: 90px;"><% Product.colors.each do |color|%><option><%=color%></option><% end %></select>
-          <a title="确定" href="javascript:void(0);"><i class="icon-ok-sign"></i></a>
-        </div>
-      </div>
-      <div>
-        <div>fabric:<%=product.fabric%></div>
-        <div>
-          <select name="fabric" style="width: 90px; margin: 0;"><% Product.fabrics.each do |fabric|%><option><%=fabric%></option><% end %></select>
-          <a title="确定" href="javascript:void(0);"><i class="icon-ok-sign"></i></a>
-        </div>
-      </div>
+      <a href="<%=url_for(:controller => 'admin/options', :action => 'create_for_product', :product_id => product.id)%>" class="btn btn-mini">添加</a>
     </td>
     <td>
       <div>id:<%= product.id %></div>

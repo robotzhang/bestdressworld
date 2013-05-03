@@ -19,6 +19,7 @@ Bestdressworld::Application.routes.draw do
     resources :amazon
     resources :categories
     resources :images
+    get 'options/create_for_product/:product_id' => 'options#create_for_product'
     resources :options
   end
 end

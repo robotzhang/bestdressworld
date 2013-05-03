@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
   has_many :images, :as => :imageable, :order => '`order` ASC'
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :options
   has_one :description, :dependent => :destroy
   has_one :discount, :dependent => :destroy
 
@@ -50,14 +51,6 @@ class Product < ActiveRecord::Base
     product.images = AmazonAPI.images(item)
 
     product
-  end
-
-  def self.colors
-    %w(black white red golden ivory wine pink)
-  end
-
-  def self.fabrics
-    %w(silk chiffon organza taffeta satin stretch\ satin stretch\ silk-like\ satin lace tulle sequins)
   end
 
   def currency_symbol

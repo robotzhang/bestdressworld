@@ -20,7 +20,7 @@ $(document).ready(function() {
     });
     return $('#cate-panel');
   }
-  set_cate_panel_position().show();
+  set_cate_panel_position();
   $('.nav-bar .find, #cate-panel').mouseover(function(){
     set_cate_panel_position().show();
   }).mouseout(function() {

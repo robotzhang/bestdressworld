@@ -1,0 +1,41 @@
+<%= form_for [:admin, @option],:html => { :class => 'form-horizontal' } do |f| %>
+    <legend>
+      <%=@option.id.blank? ? '添加' : '编辑'%> <span class="label label-info"><%= @option.group %></span> 下的option：
+    </legend>
+
+    <%= render "admin/common/errors", :errors => @option.errors %>
+
+    <div class="control-group">
+      <%= f.label :group, :class => "control-label" %>
+      <div class="controls">
+        <%= f.select :group, Option.groups %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :code, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :code %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :name_en, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name_en %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :name_cn, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name_cn %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '提交', :class => 'btn btn-primary' %>
+      <a href="<%= admin_options_url(:group => @option.group) %>" style="margin-left: 10px;"><i class="icon-share-alt"></i>返回option管理</a>
+    </div>
+<% end %>
+

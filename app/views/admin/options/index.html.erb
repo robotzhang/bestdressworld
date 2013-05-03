@@ -1,0 +1,37 @@
+<a class="btn" href="<%= new_admin_option_path(:group => params[:group]) %>"><i class="icon-plus-sign"></i> 添加</a>
+<% Option.groups.each_with_index do |group, index| %>
+<a<%=" style=font-weight:bold;" if group[1] == params[:group]%> href="<%= admin_options_path(:group=>group[1]) %>"><%=group[0]+"("+group[1]+")"%>
+</a>
+<%= '-' if index != Option.groups.size - 1 %>
+<% end %>
+
+<table class="table table-bordered table-striped mt15">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>group</th>
+      <th>code</th>
+      <th>name_en</th>
+      <th>name_cn</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @options.each do |option| %>
+    <tr>
+      <td><%=option.id%></td>
+      <td><%=option.group%></td>
+      <td><%=option.code%></td>
+      <td><%=option.name_en%></td>
+      <td><%=option.name_cn%></td>
+      <td>
+        <a href="<%= edit_admin_option_path(option) %>"><i class="icon-edit"></i>编辑</a>
+        |
+        <%= link_to content_tag(:i, '', 'class'=>'icon-remove-sign')+"删除", admin_option_path(option), :confirm => "确定删除?", :method=>:delete %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

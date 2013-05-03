@@ -19,5 +19,6 @@ Bestdressworld::Application.routes.draw do
     resources :amazon
     resources :categories
     resources :images
+    resources :options
   end
 end

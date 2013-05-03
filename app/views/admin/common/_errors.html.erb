@@ -1,0 +1,7 @@
+<% unless errors.blank? %>
+<ul class="unstyled well-small alert-error">
+  <% for message in errors.full_messages %>
+      <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>

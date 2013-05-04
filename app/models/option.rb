@@ -29,7 +29,7 @@ class Option < ActiveRecord::Base
         options[op.group] << op
         next
       end
-      options[op.group] = []
+      options[op.group] = [op]
     end
 
     options

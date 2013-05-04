@@ -79,4 +79,12 @@ class Product < ActiveRecord::Base
     prefix += prefix+", "if !prefix.blank?
     "find the best #{prefix}#{self.name.downcase} of the world from #{domain}, buy from #{self.from_site}! "
   end
+
+  def next
+    self.class.where("id > ?", self.id).order("id asc").first
+  end
+
+  def previous
+    self.class.where("id < ?", self.id).order("id desc").first
+  end
 end

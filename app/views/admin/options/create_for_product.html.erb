@@ -1,3 +1,54 @@
-<%=@product.name%>
+<% op_names = []
+  @options.each do |k, arr|
+    arr.each do |op|
+      op_names << op.name_en
+    end
+  end
+%>
 
-<%=@options%>
+<div class="row-fluid">
+    <div class="span3" style="max-height: 550px; overflow: auto;">
+      <% @product.images.each do |image| %>
+      <img src="<%=image.url%>" />
+      <% end %>
+    </div>
+    <div class="span9">
+      <%=@entities.map{|e| display_errors(e)}.join("").html_safe if !@entities.blank?%>
+      <%= form_tag "", :class => "form-inline" do %>
+        <input type="hidden" name="product_id" value="<%=@product.id%>"/>
+        <div class="fs16"><strong><%=highlight(@product.name.downcase, op_names)%></strong>
+          <%=@product.currency_symbol%><%=@product.price%>
+        </div>
+        <ul class="unstyled">
+          <% Option.groups.each do |group| %>
+          <li class="mb10">
+            <div><strong><%=group[1]+group[0]%></strong></div>
+            <div>
+              <% @options[group[1]].each do |option| %>
+                <label class="checkbox" style="min-width: 130px;">
+                  <input <%=" checked=checked" if option_belongs_to_product?(option, @product) %> type="checkbox" name="option[]" data-group="<%=option.group%>" value="<%=option.id%>"/>
+                  <span <%=" style=color:red;" if option_belongs_to_product?(option, @product) %>><%=option.code%>(<%=option.name_cn%>)</span>
+                </label>
+              <% end %>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+
+        <div>
+          <% if @product.previous.blank? %>
+              <span class="btn">没有了</span>
+          <% else %>
+              <a class="btn" href="<%=url_for(:controller => 'admin/options', :action => 'create_for_product', :product_id => @product.previous.id)%>">上一个产品</a>
+          <% end %>
+          -
+          <button class="btn btn-primary" name="add" type="submit">添加</button> -
+          <% if @product.next.blank? %>
+            <span class="btn">没有了</span>
+          <% else %>
+            <a class="btn" href="<%=url_for(:controller => 'admin/options', :action => 'create_for_product', :product_id => @product.next.id)%>">下一个产品</a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+</div>

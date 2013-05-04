@@ -1,7 +1,7 @@
 <% unless errors.blank? %>
 <ul class="unstyled well-small alert-error">
   <% for message in errors.full_messages %>
-      <li><%= message %></li>
+      <li><%= message %><button title="移除该分类" onclick="$(this).parents('ul').remove();" class="close">×</button></li>
   <% end %>
 </ul>
 <% end %>

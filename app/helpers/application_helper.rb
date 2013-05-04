@@ -4,4 +4,9 @@ module ApplicationHelper
     return ' class=active' if arr.include?(params[:controller]) || (action == 'homepage' && params[:controller] == 'application')
     ''
   end
+
+  def display_errors(object)
+    return '' if object.blank? || object.errors.blank?
+    render "admin/common/errors", :errors => object.errors
+  end
 end

@@ -18,6 +18,7 @@
 .padding20 { padding: 20px; }
 .hide { display: none; }
 .highlight { color: red; }
+.fs16 { font-size: 16px; }
 
 .images li { float: left; margin-left: 5px; text-align: center;  border: #ccc 1px solid; padding: 2px; }
 .images img { height: 50px; }

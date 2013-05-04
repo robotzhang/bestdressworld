@@ -39,5 +39,12 @@ class Admin::OptionsController < ApplicationController
   def create_for_product
     @product = Product.find(params[:product_id])
     @options = Option.data
+    if request.post?
+      ops = []
+      params[:option].each do |option_id|
+        ops << {:product_id => params[:product_id], :option_id => option_id}
+      end
+      @entities = OptionsProduct.create(ops)
+    end
   end
 end

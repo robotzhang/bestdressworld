@@ -69,8 +69,10 @@ class Product < ActiveRecord::Base
 
   def get_seo_keywords
     return self.seo_keywords if !self.seo_keywords
-    self.categories.map {|c| c.name}.join(' ') if !self.categories.blank?
-    ""
+    keywords = ""
+    keywords += self.categories.map {|c| c.name}.join(' ') if !self.categories.blank?
+    keywords += self.options.map {|o| o.name_en }.uniq.join(' ') if !self.options.blank?
+    keywords
   end
 
   def get_seo_description(domain="bestdressworld.com")

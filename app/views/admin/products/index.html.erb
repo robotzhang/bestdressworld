@@ -20,7 +20,7 @@
   <thead>
   <tr>
     <th>产品名称</th>
-    <th>options</th>
+    <th width="150">options</th>
     <th width="120">综合信息</th>
     <th width="60">操作</th>
   </tr>
@@ -43,6 +43,7 @@
       </div>
     </td>
     <td>
+      <div><%=product.options.map{|o| o.code}.join(', ')%></div>
       <a href="<%=url_for(:controller => 'admin/options', :action => 'create_for_product', :product_id => product.id)%>" class="btn btn-mini">添加</a>
     </td>
     <td>

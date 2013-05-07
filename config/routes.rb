@@ -14,9 +14,9 @@ Bestdressworld::Application.routes.draw do
 
   namespace :admin do |admin|
     get 'products/amazon' => 'products#amazon'
-    post 'products/create_category' => 'products#create_category'
     resources :products
     resources :amazon
+    match 'categories/create_for_product/:product_id' => 'categories#create_for_product'
     resources :categories
     resources :images
     match 'options/create_for_product/:product_id' => 'options#create_for_product'

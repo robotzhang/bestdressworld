@@ -1,0 +1,61 @@
+<% category_names = []
+  @categories.each do |parent, children|
+    category_names << parent.name.gsub('dresses', '').gsub('dress', '')
+    children.each do |child|
+      category_names << child.map{|k, v| k.name}[0].gsub('dresses', '').gsub('dress', '')
+    end
+  end
+%>
+
+<div class="row-fluid">
+    <div class="span3" style="max-height: 550px; overflow: auto;">
+      <% @product.images.each do |image| %>
+      <img src="<%=image.url%>" />
+      <% end %>
+    </div>
+    <div class="span9">
+      <%=@entities.map{|e| display_errors(e)}.join("").html_safe if !@entities.blank?%>
+      <%= form_tag "", :class => "form-inline" do %>
+        <input type="hidden" name="product_id" value="<%=@product.id%>"/>
+        <div class="fs16"><strong><%=highlight(@product.name.downcase, category_names)%></strong>
+          <%=@product.currency_symbol%><%=@product.price%>
+        </div>
+        <ul class="unstyled">
+          <% @categories.each do |parent, children| %>
+          <li class="mb10">
+            <div>
+              <label class="checkbox">
+                <input <%=" checked=checked" if category_belongs_to_product?(parent, @product) %> type="checkbox" name="category[]" value="<%=parent.id%>"/>
+                <strong <%=" style=color:red;" if category_belongs_to_product?(parent, @product) %>><%=parent.name%></strong>
+              </label>
+            </div>
+            <div>
+              <% children.each do |cate, arr| %>
+                <label class="checkbox" style="min-width: 130px;">
+                  <% category = cate.map{|k, v| k}[0] %>
+                  <input <%=" checked=checked" if category_belongs_to_product?(category, @product) %> type="checkbox" name="category[]" value="<%=category.id%>"/>
+                  <span <%=" style=color:red;" if category_belongs_to_product?(category, @product) %>><%=category.name%></span>
+                </label>
+              <% end %>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+
+        <div>
+          <% if @product.previous.blank? %>
+              <span class="btn">没有了</span>
+          <% else %>
+              <a class="btn" href="<%=url_for(:controller => 'admin/categories', :action => 'create_for_product', :product_id => @product.previous.id)%>">上一个产品</a>
+          <% end %>
+          -
+          <button class="btn btn-primary" name="add" type="submit">添加</button> -
+          <% if @product.next.blank? %>
+            <span class="btn">没有了</span>
+          <% else %>
+            <a class="btn" href="<%=url_for(:controller => 'admin/categories', :action => 'create_for_product', :product_id => @product.next.id)%>">下一个产品</a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+</div>

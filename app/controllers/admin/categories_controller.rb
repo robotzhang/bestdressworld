@@ -1,3 +1,4 @@
+#coding=utf-8
 class Admin::CategoriesController < ApplicationController
   before_filter do |controller|
     controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})
@@ -46,5 +47,17 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to :action => :index
+  end
+
+  def create_for_product
+    @product = Product.find(params[:product_id])
+    @categories = Category.tree
+    if request.post?
+      cps = []
+      params[:category].each do |category_id|
+        cps << {:product_id => params[:product_id], :category_id => category_id}
+      end
+      @entities = CategoriesProduct.create(cps)
+    end
   end
 end

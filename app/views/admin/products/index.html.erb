@@ -20,6 +20,7 @@
   <thead>
   <tr>
     <th>产品名称</th>
+    <th width="150">分类</th>
     <th width="150">options</th>
     <th width="120">综合信息</th>
     <th width="60">操作</th>
@@ -32,15 +33,10 @@
       <%= product.name.downcase %>
       <% provide(:javascript, javascript_include_tag('admin/images')) %>
       <%= render 'admin/images/list', :images=>product.images %>
-      <div class="cates">
-        <% product.categories.each do |category| %>
-            <a class="label label-important" href="javascript:void(0);">
-              <%= category.name %><button title="移除该分类" onclick="" class="close">×</button>
-            </a>
-        <% end %>
-        <%=render_category_select%>
-        <a class="btn btn-mini add-category" data-id="<%=product.id%>" href="<%= url_for(:controller => 'admin/products', :action => 'create_category') %>">添加分类</a>
-      </div>
+    </td>
+    <td>
+      <div><%=product.categories.map{|c| c.name}.join(', ')%></div>
+      <a href="<%=url_for(:controller => 'admin/categories', :action => 'create_for_product', :product_id => product.id)%>" class="btn btn-mini">添加</a>
     </td>
     <td>
       <div><%=product.options.map{|o| o.code}.join(', ')%></div>

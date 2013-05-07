@@ -42,7 +42,7 @@
               <a class="btn" href="<%=url_for(:controller => 'admin/options', :action => 'create_for_product', :product_id => @product.previous.id)%>">上一个产品</a>
           <% end %>
           -
-          <button class="btn btn-primary" name="add" type="submit">添加</button> -
+          <%= submit_tag "添加", :disable_with => "提交中...", :class=>"btn btn-primary"%> -
           <% if @product.next.blank? %>
             <span class="btn">没有了</span>
           <% else %>

@@ -4,7 +4,9 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
   has_many :images, :as => :imageable, :order => '`order` ASC'
   has_and_belongs_to_many :categories
+  after_destroy {categories.clear}
   has_and_belongs_to_many :options
+  after_destroy {options.clear}
   has_one :description, :dependent => :destroy
   has_one :discount, :dependent => :destroy
 

@@ -116,7 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   amazon-ecs
-  bcrypt-ruby
+  bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 2.3.1.0)
   coffee-rails (~> 3.2.1)
   jquery-rails

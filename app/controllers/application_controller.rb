@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def homepage
-    render :template => 'homepage'
+    render :template => 'coming', :layout => false
   end
 
   def admin

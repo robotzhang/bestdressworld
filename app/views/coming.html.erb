@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%= yield(:title) || 'BestDressWorld.com: Find The Best Dress Of The World!' %></title>
+    <style type="text/css">
+      body { background: #E4E5E9 url(<%=asset_path('common/bg.jpg')%>); font-family: verdana; font-size: 14px; }
+      .content { padding-top: 130px; height: 300px; text-align: center; }
+      .logo { border-bottom: #FA649F 2px solid; padding: 20px; margin: 10px auto; width: 700px; }
+      .slogan { font: 30px Georgia italic; color: #FA649F;  }
+      .links { padding: 30px; color: #999; }
+      a { color: #1a1a1a; text-decoration: none; }
+      a:hover { color: #FA649F; }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <h1 class="logo"><a title="bestdressworld.com" href="<%=root_url%>"><img src="<%= asset_path('logo.png') %>"/></a></h1>
+      <div class="slogan">Find the best dress of the world, share with friends!</div>
+      <div class="links">
+        Links:
+        <a href="<%=root_url%>">Home</a> |
+        <a href="<%= products_url %>">Products</a>
+      </div>
+    </div>
+  </body>
+</html>

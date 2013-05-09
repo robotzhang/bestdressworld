@@ -2,34 +2,35 @@
   <div class="info-bar" style="height: 60px; margin-top: 10px;">
     <div class="container">
       <a href="<%= root_url %>"><img src="<%= asset_path('logo.png') %>"/></a>
-      <div class="pull-right">
-        <% if signed_in? %>
-        welcome: <%=current_user.nickname%>
-        <a href="<%=logout_url%>">logout</a>
-        <% else %>
-        <a href="<%=login_url%>">login</a>
-        <a href="<%=signup_url%>">sign up </a>
-        <% end %>
-      </div>
+
     </div>
   </div>
   <div class="nav-bar">
     <div class="container">
-        <ul class="nav-main pull-left unstyled">
-          <li class="find"><a href="javascript:void(0);">Find All</a></li>
-          <li><a <%=nav_active(nil, 'homepage')%> href="<%= root_url %>">Home</a></li>
-          <li class="split"><a <%=nav_active('products')%> href="<%= products_url %>">Products</a></li>
-          <li class="split"><a <%=nav_active('topics')%>href="javascript:void(0);">Topic</a></li>
-          <li class="split"><a href="javascript:void(0);">How To</a></li>
-          <li class="split"><a href="javascript:void(0);">Sale</a></li>
-        </ul>
-        <ul class="pull-right unstyled">
-          <li>History</li>
-          <li>Love</li>
-        </ul>
-        </div>
+      <ul class="nav-main pull-left unstyled">
+        <!--li class="find"><a href="javascript:void(0);">Find All</a></li-->
+        <li><a <%=nav_active(nil, 'homepage')%> href="<%= root_url %>">Home</a></li>
+        <li class="split"><a <%=nav_active('products')%> href="<%= products_url %>">Products</a></li>
+        <!--li class="split"><a <%=nav_active('topics')%>href="javascript:void(0);">Topic</a></li>
+        <li class="split"><a href="javascript:void(0);">How To</a></li>
+        <li class="split"><a href="javascript:void(0);">Sale</a></li-->
+      </ul>
+      <!--ul class="pull-right unstyled">
+        <li>History</li>
+        <li>Love</li>
+      </ul-->
+      <ul class="pull-right unstyled">
+        <% if signed_in? %>
+          <li>welcome: <%=current_user.nickname%></li>
+          <li class="split"><a href="<%=logout_url%>">logout</a></li>
+        <% else %>
+          <li><a <%=nav_active('sessions', 'login')%> href="<%=login_url%>">login</a></li>
+          <li class="split"><a <%=nav_active('users', 'signup')%> href="<%=signup_url%>">sign up </a></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div id="cate-panel"<%= yield(:show_cate_panel) || '' %>>
+  <!--div id="cate-panel"<%= yield(:show_cate_panel) || '' %>>
      <ul class="cate-nav">
        <li>
          <div class="big">
@@ -84,6 +85,6 @@
          </div>
          <b></b></li>
      </ul>
-  </div>
+  </div-->
   <div class="bottom"></div>
 </div>

@@ -46,17 +46,7 @@ Bestdressworld::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  def compile_asset?(path)
-    if File.basename(path) =~ /^[^_].*\.\w+$/
-      puts "Compiling: #{path}"
-      true
-    else
-      puts "Ignoring: #{path}"
-      false
-    end
-  end
-
-  config.assets.precompile = [ method(:compile_asset?).to_proc ]
+  config.assets.precompile += [ Proc.new {|path| File.basename(path) =~ /^[^_].*\.\w+$/} ]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

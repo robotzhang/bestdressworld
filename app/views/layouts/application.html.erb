@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag params[:controller] %>
   <%= yield(:stylesheet) %>
+  <%= render "common/ga" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag params[:controller] %>
   <%= yield(:javascript) %>

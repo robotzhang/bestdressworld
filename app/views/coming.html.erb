@@ -8,18 +8,33 @@
     <title>BestDressWorld.com: Find The Best Dress Of The World!</title>
     <style type="text/css">
       body { background: #E4E5E9 url(<%=asset_path(bgs[rand(bgs.size)])%>); font-family: verdana; font-size: 14px; }
-      .content { padding-top: 130px; height: 300px; text-align: center; }
+      .content { padding-top: 50px; height: 300px; text-align: center; }
       .logo { border-bottom: #FA649F 2px solid; padding: 20px; margin: 10px auto; width: 700px; }
       .slogan { font: 30px Georgia italic; color: #FA649F;  }
       .links { padding: 30px; color: #999; }
       a { color: #1a1a1a; text-decoration: none; }
       a:hover { color: #FA649F; }
+      .images { margin: 0 auto; width: 1150px; margin-bottom: 30px; }
+      .images li { float: left; list-style: none; border-radius: 100px; overflow: hidden; width: 100px; height: 100px; background-color: #fff; margin-right: 10px; }
     </style>
     <%= render "common/ga" %>
   </head>
 
   <body>
     <div class="content">
+      <div class="images">
+        <ul>
+          <% @products.each do |product| %>
+          <% hw = image_width_height(product.images[0], 100) %>
+          <li>
+            <a title="<%=product.name+'-'+product.currency_symbol+product.price.to_s%>" href="<%= product_url(product.seo_url) %>">
+              <img alt="<%=product.name%>" style="width:<%=hw[:width]%>px; height:<%=hw[:height]%>px;" src="<%=product.images[0].url%>" />
+            </a>
+          </li>
+          <% end %>
+        </ul>
+        <div style="clear:both;"></div>
+      </div>
       <h1 class="logo"><a title="bestdressworld.com" href="<%=root_url%>"><img src="<%= asset_path('logo.png') %>"/></a></h1>
       <div class="slogan">Find the best dress of the world, share with friends!</div>
       <div class="links">

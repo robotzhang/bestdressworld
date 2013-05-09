@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def homepage
+    @products = Product.order("id DESC").includes([:images]).limit(10).all
     render :template => 'coming', :layout => false
   end
 

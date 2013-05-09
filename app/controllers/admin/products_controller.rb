@@ -5,7 +5,7 @@ class Admin::ProductsController < ApplicationController
   end
   layout 'admin'
   def index
-    @products = Product.order(:id).includes([:discount, :images]).page(params[:page]).per(10)
+    @products = Product.order("id DESC").includes([:discount, :images]).page(params[:page]).per(10)
   end
 
   def amazon

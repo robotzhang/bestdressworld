@@ -1,3 +1,4 @@
+#coding=utf-8
 class Admin::AmazonController < ApplicationController
   before_filter do |controller|
     controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})

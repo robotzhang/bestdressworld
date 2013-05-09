@@ -1,10 +1,13 @@
+<%
+   bgs = %w(common/bg.jpg)
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><%= yield(:title) || 'BestDressWorld.com: Find The Best Dress Of The World!' %></title>
     <style type="text/css">
-      body { background: #E4E5E9 url(<%=asset_path('common/bg.jpg')%>); font-family: verdana; font-size: 14px; }
+      body { background: #E4E5E9 url(<%=asset_path(bgs[rand(bgs.size)])%>); font-family: verdana; font-size: 14px; }
       .content { padding-top: 130px; height: 300px; text-align: center; }
       .logo { border-bottom: #FA649F 2px solid; padding: 20px; margin: 10px auto; width: 700px; }
       .slogan { font: 30px Georgia italic; color: #FA649F;  }

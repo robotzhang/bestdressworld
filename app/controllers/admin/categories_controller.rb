@@ -51,7 +51,6 @@ class Admin::CategoriesController < ApplicationController
 
   def create_for_product
     @product = Product.find(params[:product_id])
-    @categories = Category.tree
     if request.post?
       cps = []
       params[:category].each do |category_id|

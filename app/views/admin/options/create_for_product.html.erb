@@ -1,5 +1,5 @@
 <% op_names = []
-  @options.each do |k, arr|
+   Option.data.each do |k, arr|
     arr.each do |op|
       op_names << op.name_en
     end
@@ -24,7 +24,7 @@
           <li class="mb10">
             <div><strong><%=group[1]+group[0]%></strong></div>
             <div>
-              <% @options[group[1]].each do |option| %>
+              <% Option.data[group[1]].each do |option| %>
                 <label class="checkbox" style="min-width: 130px;">
                   <input <%=" checked=checked" if option_belongs_to_product?(option, @product) %> type="checkbox" name="option[]" data-group="<%=option.group%>" value="<%=option.id%>"/>
                   <span <%=" style=color:red;" if option_belongs_to_product?(option, @product) %>><%=option.code%>(<%=option.name_cn%>)</span>

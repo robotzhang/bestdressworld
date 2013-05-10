@@ -38,7 +38,6 @@ class Admin::OptionsController < ApplicationController
 
   def create_for_product
     @product = Product.find(params[:product_id])
-    @options = Option.data
     if request.post?
       ops = []
       params[:option].each do |option_id|

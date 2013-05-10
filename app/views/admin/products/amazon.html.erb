@@ -1,5 +1,18 @@
-<div>
-  确实数据无误后点提交入库：
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">基础数据项</a></li>
+    <li><a href="#tab2" data-toggle="tab">Options</a></li>
+    <li><a href="#tab3" data-toggle="tab">所属分类</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <p><%= render :partial => 'admin/products/form' %></p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p><%= render :template => 'admin/options/create_for_product' %></p>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <p><%= render :template => 'admin/categories/create_for_product' %></p>
+    </div>
+  </div>
 </div>
-
-<%= render :partial => 'admin/products/form' %>

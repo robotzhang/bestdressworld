@@ -1,5 +1,5 @@
 <% category_names = []
-  @categories.each do |parent, children|
+   Category.tree.each do |parent, children|
     category_names << parent.name.gsub('dresses', '').gsub('dress', '')
     children.each do |child|
       category_names << child.map{|k, v| k.name}[0].gsub('dresses', '').gsub('dress', '')
@@ -21,7 +21,7 @@
           <%=@product.currency_symbol%><%=@product.price%>
         </div>
         <ul class="unstyled">
-          <% @categories.each do |parent, children| %>
+          <% Category.tree.each do |parent, children| %>
           <li class="mb10">
             <div>
               <label class="checkbox">

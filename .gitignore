@@ -15,3 +15,5 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+/public/sitemaps/sitemap.xml.gz
+/public/sitemaps/sitemap1.xml.gz

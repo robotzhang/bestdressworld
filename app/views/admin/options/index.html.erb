@@ -25,9 +25,13 @@
       <td><%=option.name_en%></td>
       <td><%=option.name_cn%></td>
       <td>
+        <% if can?(:update, option) %>
         <a href="<%= edit_admin_option_path(option) %>"><i class="icon-edit"></i>编辑</a>
+        <% end %>
+        <% if can?(:destroy, option) %>
         |
         <%= link_to content_tag(:i, '', 'class'=>'icon-remove-sign')+"删除", admin_option_path(option), :confirm => "确定删除?", :method=>:delete %>
+        <% end %>
       </td>
     </tr>
     <% end %>

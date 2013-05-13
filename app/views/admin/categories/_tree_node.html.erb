@@ -1,8 +1,10 @@
 <span><%= category.name %></span>
 <span class="actions" style="display: none;">
-  <% if !category.children.blank? || category.parent_id == 0 %>
-  <a class="add" title="添加子分类" href="<%= new_admin_category_url(:parent_id => category.id, :format=>'js') %>"><i class="icon-plus"></i></a> |
+  <% if can?(:manage, category) %>
+    <% if !category.children.blank? || category.parent_id == 0 %>
+    <a class="add" title="添加子分类" href="<%= new_admin_category_url(:parent_id => category.id, :format=>'js') %>"><i class="icon-plus"></i></a> |
+    <% end %>
+    <a class="edit" title="编辑该分类" href="<%= edit_admin_category_url(category, :format=>'js') %>"><i class="icon-edit"></i></a> |
+    <%= link_to content_tag(:i, '', 'class'=>'icon-remove'), admin_category_url(category), :confirm => "确定删除#{category.name}?", :method=>:delete, :title => "删除该分类"  %>
   <% end %>
-  <a class="edit" title="编辑该分类" href="<%= edit_admin_category_url(category, :format=>'js') %>"><i class="icon-edit"></i></a> |
-  <%= link_to content_tag(:i, '', 'class'=>'icon-remove'), admin_category_url(category), :confirm => "确定删除#{category.name}?", :method=>:delete, :title => "删除该分类"  %>
 </span>

@@ -1,5 +1,9 @@
 <div class="pull-left tree">
-  <div class="node">root <a title="为根分类添加子分类" href="<%= new_admin_category_url(:parent_id => 0) %>"><i class="icon-plus"></i></a></div>
+  <div class="node">root
+    <% if can?(:manage, Category) %>
+    <a title="为根分类添加子分类" href="<%= new_admin_category_url(:parent_id => 0) %>"><i class="icon-plus"></i></a>
+    <% end %>
+  </div>
   <div class="children" id="children0">
     <% @categories.each_with_index do |category, index| %>
       <div class="node-group">

@@ -1,6 +1,7 @@
 #coding=utf-8
 class User < ActiveRecord::Base
   attr_accessible :nickname, :email, :password, :password_confirmation # 这个地方很重要,否则前台可以伪造表单的role字段从而提升权限
+  attr_protected :role
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -14,6 +15,10 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
+
+  def has_role?(role)
+    self.role == role.to_s
+  end
 
   private
   def create_remember_token

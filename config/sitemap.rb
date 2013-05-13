@@ -1,6 +1,5 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.bestdressworld.com"
-SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

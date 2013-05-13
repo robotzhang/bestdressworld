@@ -1,9 +1,5 @@
 #coding=utf-8
-class Admin::CategoriesController < ApplicationController
-  before_filter do |controller|
-    controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})
-  end
-  layout 'admin'
+class Admin::CategoriesController < Admin::ApplicationController
   def index
     @categories = Category.where(:parent_id => 0).includes(:children).all
   end

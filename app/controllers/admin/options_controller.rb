@@ -1,10 +1,5 @@
 #coding=utf-8
-class Admin::OptionsController < ApplicationController
-  before_filter do |controller|
-    controller.authenticated({:role => 'admin', :alert=>'不具备的权限'})
-  end
-  layout "admin"
-
+class Admin::OptionsController < Admin::ApplicationController
   def index
     return redirect_to(:action => :index, :group => Option.groups[0][1]) if params[:group].blank?
     @options = Option.find_all_by_group(params[:group])

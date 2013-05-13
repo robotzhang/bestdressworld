@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   # 登录验证
   def authenticated(options)
     default ={
-        :role => '',
+        :role => [],
         :alert => '请先登陆'
     }
     options = default.merge(options)
-    if  current_user.nil? || (!options[:role].empty? && current_user.role != options[:role])
+    if  current_user.nil? || (!options[:role].empty? &&  !options[:role].include?(current_user.role))
       redirect_to login_url, :alert => options[:alert]
       return false
     end

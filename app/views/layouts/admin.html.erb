@@ -13,7 +13,7 @@
 <body>
     <div>
         <div class="pull-right" style="padding: 10px;;">
-          欢迎：admin
+          欢迎<%=current_user.role%>：<%=current_user.nickname%>
           -
           <a href="<%=logout_url%>">退出</a>
           -

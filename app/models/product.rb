@@ -1,7 +1,10 @@
 #coding=utf-8
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
+  attr_protected :creater_id, :updater_id
+
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
+
   has_many :images, :as => :imageable, :order => '`order` ASC'
   has_and_belongs_to_many :categories
   after_destroy {categories.clear}

@@ -29,4 +29,10 @@ class Admin::ProductsController < Admin::ApplicationController
   def update
     @product.updater_id = current_user.id
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to :action => :index
+  end
 end

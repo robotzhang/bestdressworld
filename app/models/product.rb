@@ -67,6 +67,12 @@ class Product < ActiveRecord::Base
     end
   end
 
+  # 重新格式化name
+  def name
+    undef name
+    self.name = String.class_eval(%Q("#{name}"))
+  end
+
   def get_seo_title
     return self.seo_title if !self.seo_title.blank?
     self.name.downcase+" - #{self.currency} #{self.currency_symbol} #{self.price.to_s}"

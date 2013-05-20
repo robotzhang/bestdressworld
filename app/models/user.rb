@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
 
   validates :nickname, presence: true,
-            :format => {:with => /\A\w+\z/, :message => 'must contain only these characters: a-zA-Z0-9_'},
+            format: {:with => /\A\w+\z/, :message => 'must contain only these characters: a-zA-Z0-9_'},
             length: { :in => 3..20 },
-            :uniqueness => {:case_sensitive => false}
+            uniqueness: {:case_sensitive => false}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
             format: { with: VALID_EMAIL_REGEX },

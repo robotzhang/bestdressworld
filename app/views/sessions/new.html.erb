@@ -1,24 +1,30 @@
-<div class="container">
-  <% provide(:title, "Sign in") %>
-  <h1>Sign in</h1>
+<% provide(:title, "Sign in") %>
+<div class="sign">
+  <h2>Sign in</h2>
 
-  <div class="row">
-      <div class="span6 offset3">
-          <%= form_for(:session, url: sessions_path) do |f| %>
+  <p class="unstyled well-small alert-error">
+    <%=flash.now[:error]%>
+    <button onclick="$(this).parents('p').remove();" class="close">×</button>
+  </p>
 
-          <%= f.label :email %>
-          <%= f.text_field :email %>
+  <%= form_for(:session, url: sessions_path) do |f| %>
 
-          <%= f.label :password %>
-          <%= f.password_field :password %>
+      <p><%= f.label :email %>
+      <%= f.text_field :email %></p>
 
-          <%= f.label :remember_token, "remember me" %>
+      <p><%= f.label :password %>
+      <%= f.password_field :password %></p>
+
+      <p>
+        <label class="checkbox">
+          remember me
           <%= f.check_box :remember_token %>
+        </label>
+      </p>
 
-          <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-          <% end %>
-
-          <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-      </div>
-  </div>
+      <p class="btn-area">
+        <%= f.submit "Sign in", class: "btn btn-info" %>
+        <a href="#" class="btn btn-link">Forgot password?</a>
+      </p>
+  <% end %>
 </div>

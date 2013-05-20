@@ -1,11 +1,12 @@
-<% @products.each do |product| %>
 var col = $('.waterfall .col:first');
+<% @products.each do |product| %>
 $.each($('.waterfall .col'), function(){
     if ($(this).height() < col.height()) {
         col = $(this);
     }
 });
 var item = $("<%= j render :partial => "item", :locals => {:product => product} %>");
+
 item.hide().appendTo(col).fadeIn();
-$('.pagination').html('<%= j paginate @products, :theme => 'bootstrap', :remote => true %>');
 <% end %>
+$('.pagination').html('<%= j paginate @products, :theme => 'bootstrap', :remote => true %>');

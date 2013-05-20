@@ -44,10 +44,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    draper (1.2.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -95,7 +91,6 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    request_store (1.0.5)
     ruby-hmac (0.4.0)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -128,11 +123,12 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.1.0)
   cancan
   coffee-rails (~> 3.2.1)
-  draper (~> 1.0)
   jquery-rails
   kaminari
   mysql2
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
   sitemap_generator
+  therubyracer
   uglifier (>= 1.0.3)
+  unicorn

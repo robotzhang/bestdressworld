@@ -17,7 +17,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.1.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -33,13 +33,13 @@ gem 'sitemap_generator'
 # Role control
 gem 'cancan'
 
-gem 'draper', '~> 1.0'
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn', :platforms => :ruby
 
 # Deploy with Capistrano
 # gem 'capistrano'

@@ -2,10 +2,12 @@
 <div class="sign">
   <h2>Sign in</h2>
 
+  <% unless flash.now[:error].blank? %>
   <p class="unstyled well-small alert-error">
     <%=flash.now[:error]%>
     <button onclick="$(this).parents('p').remove();" class="close">×</button>
   </p>
+  <% end %>
 
   <%= form_for(:session, url: sessions_path) do |f| %>
 

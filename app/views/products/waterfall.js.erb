@@ -6,7 +6,6 @@ $.each($('.waterfall .col'), function(){
     }
 });
 var item = $("<%= j render :partial => "item", :locals => {:product => product} %>");
-
 item.hide().appendTo(col).fadeIn();
 <% end %>
 $('.pagination').html('<%= j paginate @products, :theme => 'bootstrap', :remote => true %>');

@@ -14,7 +14,7 @@
 //= require jquery_ujs
 
 $(document).ready(function() {
-  function set_cate_panel_position() {
+  /*function set_cate_panel_position() {
     $('#cate-panel').css({
         left: $('.nav-bar .find a').offset().left
     });
@@ -28,5 +28,5 @@ $(document).ready(function() {
       return false;
     }
     $('#cate-panel').hide();
-  });
+  }); */
 });

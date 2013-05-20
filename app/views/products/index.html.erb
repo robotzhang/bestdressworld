@@ -21,4 +21,15 @@
   <% end %>
 </div>
 
-<div class="container"><%= paginate @products, :theme => 'bootstrap' %></div>
+<div class="container hide"><%= paginate @products, :theme => 'bootstrap', :remote => true %></div>
+
+<script>
+  $(document).ready(function(){
+      $(window).scroll(function () {
+          if (($(window).height() + $(window).scrollTop()) >= ($("body").height() - $(".footer").height())) {
+              $('.pagination a[rel=next]').click();
+              $('.pagination').html('');
+          }
+      });
+  });
+</script>

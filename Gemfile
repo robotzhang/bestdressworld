@@ -33,7 +33,7 @@ gem 'sitemap_generator'
 # Role control
 gem 'cancan'
 
-
+gem 'draper', '~> 1.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

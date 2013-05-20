@@ -1,3 +1,4 @@
+# generate by command: rails g decorator Product
 class ProductDecorator < Draper::Decorator
   delegate_all
   def name
@@ -25,6 +26,7 @@ class ProductDecorator < Draper::Decorator
   end
 end
 
+# for kaminari pagination
 class ProductsDecorator < Draper::CollectionDecorator
   delegate :current_page, :total_pages, :limit_value
 end

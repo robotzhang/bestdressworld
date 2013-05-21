@@ -10,13 +10,13 @@
 
   <div class="line"></div>
 
-  <p class="text-center other-way">
+  <p class="text-center other-way <%=@user.errors.blank? ? '' : 'hide'%>">
     <small>Sign up with
       <a onclick="$('#new_user').show();$('.other-way').hide();" href="javascript:void(0);"><b>your email address</b></a>
     </small>
   </p>
 
-  <%= form_for(@user, :html => {:class=>'hide'}) do |f| %>
+  <%= form_for(@user, :html => {:class => (@user.errors.blank? ? 'hide' : '')}) do |f| %>
       <p><small>Sign up with your email address</small></p>
       <%= display_errors(@user) %>
       <p>

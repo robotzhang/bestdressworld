@@ -8,7 +8,8 @@
 .sign input[type="text"], .sign input[type="password"] { width: 410px; height: 20px; line-height: 19px; padding: 7px; margin-bottom: 0px; }
 .sign .btn-area { margin-top: 30px; }
 .sign .line { border-bottom: #ECEFF2 1px solid; margin: 20px 0; }
-.sns li { float: left; margin-right: 10px; }
+.sns li { float: left; margin-right: 16px; }
+.sns li.last { margin-right: 0; }
 .sns a { font-size: 14px; font-weight: bold; width: 130px; text-decoration: none; border-radius: 3px; background-color: #e13b3c; color: #fff; height: 43px; line-height: 42px; display: block; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 .sns a.twitter { background-color: #2BB3E5; }
 .sns a.twitter i { background-position: -35px 0; }

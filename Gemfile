@@ -36,6 +36,8 @@ gem 'draper', '~> 1.0'
 # 三方平台 OAuth 验证登陆
 gem "omniauth", "~> 1.0.1"
 gem "omniauth-twitter"
+gem "omniauth-facebook"
+gem "omniauth-google"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

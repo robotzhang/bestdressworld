@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
 
   # 通过第三方查找或者创建用户
   def self.find_or_create_from_auth_hash(auth)
-    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :nickname => auth.info.name, :image => auth.info.image})
+    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :nickname => auth.info.nickname, :image => auth.info.image})
+    user.nickname = auth.info.name if user.nickname.blank?
     user.email = auth.info.email if auth.info.email
     user_db = User.where({:sns_uid => user.sns_uid, :sns_provider => user.sns_provider}).first
     return user_db unless user_db.blank?

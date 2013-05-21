@@ -1,7 +1,14 @@
 <% provide(:title, "Sign in") %>
 <div class="sign">
   <h2>Sign in</h2>
-
+  <p><small>Connect with a social network</small></p>
+  <ul class="sns unstyled clearfix">
+    <li><a class="twitter" href="/auth/twitter"><i></i>Twitter</a></li>
+    <!--li><a class="facebook" href="/auth/facebook"><i></i>Facebook</a></li>
+    <li><a class="google" href="/auth/google"><i></i>Google</a></li-->
+  </ul>
+  <div class="line"></div>
+  <p><small>Sign in with your email address</small></p>
   <% unless flash.now[:error].blank? %>
   <p class="unstyled well-small alert-error">
     <%=flash.now[:error]%>

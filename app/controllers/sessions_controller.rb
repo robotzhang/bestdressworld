@@ -4,7 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:session][:email].downcase)
+    unless request.env['omniauth.auth'].blank?
+      user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+      session[:user] = user
+      return redirect_to root_url, :notice => "Logged in!"
+    end
+
+    user = User.find_by_email(params[:session][:email].downcase) if user.blank?
     if user && user.authenticate(params[:session][:password])
       cookies.permanent[:remember_token] = user.remember_token if params[:session][:remember_token]
       session[:user] = user

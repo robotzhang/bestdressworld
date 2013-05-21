@@ -10,7 +10,8 @@ Bestdressworld::Application.routes.draw do
   match '/login' => 'sessions#new'
   match '/logout' =>  'sessions#destroy'
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  resources :sessions, :only => [:new, :create, :destroy]
 
   namespace :admin do |admin|
     get 'products/amazon' => 'products#amazon'

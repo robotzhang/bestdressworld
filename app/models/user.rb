@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   attr_protected :role
   has_secure_password
 
-  before_save { |user| user.email = email.downcase }
-
   validates :nickname, presence: true,
             format: {:with => /\A\w+\z/, :message => 'must contain only these characters: a-zA-Z0-9_'},
             length: { :in => 3..20 },
@@ -16,11 +14,20 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
 
-  before_save { |user| user.email = email.downcase }
+  before_save { |user| user.email = email.downcase unless email.blank? }
   before_save :create_remember_token
 
   def has_role?(role)
     self.role == role.to_s
+  end
+
+  # 通过第三方查找或者创建用户
+  def self.find_or_create_from_auth_hash(auth)
+    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :nickname => auth.info.nickname, :image => auth.info.image})
+    user_db = User.where({:sns_uid => user.sns_uid, :sns_provider => user.sns_provider}).first
+    return user_db unless user_db.blank?
+    user.save!(:validate => false) # 不验证保存
+    user
   end
 
   private

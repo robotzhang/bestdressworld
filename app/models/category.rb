@@ -6,8 +6,8 @@ class Category < ActiveRecord::Base
   after_destroy {products.clear}
   belongs_to :parent, :class_name => "Category"
 
-  validates_presence_of :name, :message => '分类名称不能为空'
-  validates_uniqueness_of :name, :message => '%{value} 分类名称不能重复'
+  validates_presence_of :code, :message => '分类名称不能为空'
+  validates_uniqueness_of :code, :message => '%{value} 分类名称不能重复'
   validates_presence_of :url_key, :message => '必须指定分类在url中显示的字符串'
 
   def self.tree

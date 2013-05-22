@@ -1,4 +1,4 @@
-<span><%= category.name %></span>
+<span><%= category.name %><%='('+category.name_cn+')' unless category.name_cn.blank?%></span>
 <span class="actions" style="display: none;">
   <% if can?(:manage, category) %>
     <% if !category.children.blank? || category.parent_id == 0 %>

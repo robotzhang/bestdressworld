@@ -26,7 +26,9 @@
             <div>
               <label class="checkbox">
                 <input <%=" checked=checked" if category_belongs_to_product?(parent, @product) %> type="checkbox" name="category[]" value="<%=parent.id%>"/>
-                <strong <%=" style=color:red;" if category_belongs_to_product?(parent, @product) %>><%=parent.name%></strong>
+                <strong <%=" style=color:red;" if category_belongs_to_product?(parent, @product) %>>
+                  <%=parent.name%><%='('+parent.name_cn+')' unless parent.name_cn.blank?%>
+                </strong>
               </label>
             </div>
             <div>
@@ -34,7 +36,9 @@
                 <label class="checkbox" style="min-width: 130px;">
                   <% category = cate.map{|k, v| k}[0] %>
                   <input <%=" checked=checked" if category_belongs_to_product?(category, @product) %> type="checkbox" name="category[]" value="<%=category.id%>"/>
-                  <span <%=" style=color:red;" if category_belongs_to_product?(category, @product) %>><%=category.name%></span>
+                  <span <%=" style=color:red;" if category_belongs_to_product?(category, @product) %>>
+                    <%=category.name%><%='('+category.name_cn+')' unless category.name_cn.blank?%>
+                  </span>
                 </label>
               <% end %>
             </div>

@@ -1,0 +1,9 @@
+<% provide(:title, "all brands in bestdressworld.com") %>
+<ul class="brands unstyled">
+  <% @brands.each do |brand| %>
+  <li class="pull-left">
+    <div><img src="<%=brand.logo%>"/></div>
+    <div class="text-center"><a href="<%= brand_url(brand) %>"><%= brand.name %></a></div>
+  </li>
+  <% end %>
+</ul>

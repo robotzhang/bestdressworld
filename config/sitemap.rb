@@ -13,8 +13,12 @@ SitemapGenerator::Sitemap.create do
   # Defaults: :priority => 0.5, :changefreq => 'weekly',
   #           :lastmod => Time.now, :host => default_host
   add products_path, :changefreq => 'daily'
+  add brands_path, :changefreq => 'daily'
   Product.find_each do |product|
     add product_path(product.seo_url), :lastmod => product.updated_at
+  end
+  Brand.find_each do |brand|
+    add brand_path(brand), :lastmod => brand.created_at
   end
   #
   # Examples:

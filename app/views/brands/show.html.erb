@@ -1,0 +1,30 @@
+<% provide(:title, @brand.name) %>
+<% provide(:description, @brand.introduce) %>
+<div class="row">
+  <div class="span9">
+    <div class="box padding10">
+      <p class="fs16"><strong>all products of <%= @brand.name %></strong></p>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="box padding10 text-center mb15">
+      <div><img src="<%=@brand.logo%>"/></div>
+      <div><%=@brand.name%></div>
+      <div><%=@brand.slogan%></div>
+    </div>
+
+    <div class="box padding10 mb15">
+      <p>Brand Profile</p>
+      <div>Name: <%=@brand.name%></div>
+      <div>Country: <%=@brand.country%></div>
+      <div>Since: <%=@brand.year%></div>
+      <div>Good at: <%=@brand.good_at%></div>
+      <div>Website: <a href="<%= @brand.website%>" target="_blank"><%= @brand.website%></a></div>
+    </div>
+
+    <div class="box padding10">
+      <p>brand story</p>
+      <div><%=@brand.introduce%></div>
+    </div>
+  </div>
+</div>

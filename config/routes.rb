@@ -6,7 +6,10 @@ Bestdressworld::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
-  resources :brands
+  get 'brands/:url_key' => 'brands#show'
+  resources :brands do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
   match '/signup' => 'users#new'
   match '/login' => 'sessions#new'

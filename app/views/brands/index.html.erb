@@ -2,8 +2,8 @@
 <ul class="brands box clearfix unstyled">
   <% @brands.each_with_index do |brand, index| %>
   <li <%= "class=right-last" if (index+1) % 5 == 0 %>>
-    <div class="logo"><a title="<%=brand.name%>" href="<%= brand_url(brand) %>"><img src="<%=brand.logo%>"/></a></div>
-    <div class="slogan"><a href="<%= brand_url(brand) %>"><%= brand.slogan.blank? ? brand.name : brand.slogan %></a></div>
+    <div class="logo"><a title="<%=brand.name%>" href="<%= brand_url(brand.url_key) %>"><img src="<%=brand.logo%>"/></a></div>
+    <div class="slogan"><a href="<%= brand_url(brand.url_key) %>"><%= brand.slogan.blank? ? brand.name : brand.slogan %></a></div>
   </li>
   <% end %>
 </ul>

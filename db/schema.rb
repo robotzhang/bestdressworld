@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523090324) do
+ActiveRecord::Schema.define(:version => 20130524090736) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130523090324) do
     t.string   "country"
     t.integer  "year"
     t.string   "good_at"
+    t.string   "url_key"
   end
 
   create_table "categories", :force => true do |t|

@@ -5,7 +5,8 @@ class BrandsController < ApplicationController
   end
 
   def show
-    @brand = Brand.find(params[:id])
+    @brand = Brand.find_by_url_key(params[:url_key])
+    @brand = Brand.find(params[:url_key]) if @brand.blank?
   end
 
   def new

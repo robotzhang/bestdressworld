@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     elsif user.has_role?(:editor)
       can [:create, :read, :update, :amazon], [Product]
+      can [:create, :read, :update], [Brand]
       basic_read_only
     else
       cannot :manage, :all

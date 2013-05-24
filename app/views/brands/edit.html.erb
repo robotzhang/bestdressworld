@@ -1,0 +1,9 @@
+<% provide(:title, 'edit brand: '+ @brand.name) %>
+
+<%= form_for @brand,:html => { :class => 'form-horizontal form-large box padding10' } do |f| %>
+  <div><%=display_errors(@brand)%></div>
+  <%=render "fields", :f=>f%>
+  <div class="mt10">
+    <%=f.submit :class => 'btn btn-info'%>
+  </div>
+<% end %>

@@ -18,7 +18,7 @@ SitemapGenerator::Sitemap.create do
     add product_path(product.seo_url), :lastmod => product.updated_at
   end
   Brand.find_each do |brand|
-    add brand_path(brand), :lastmod => brand.created_at
+    add brand_path(brand.url_key.blank? ? brand.id : brand.url_key), :lastmod => brand.created_at
   end
   #
   # Examples:

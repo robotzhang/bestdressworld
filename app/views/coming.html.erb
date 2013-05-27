@@ -39,7 +39,7 @@
       <div class="slogan">Find the best dress in the world, share with friends!</div>
       <div class="links">
         <% if signed_in? %>
-            welcome: <%=current_user.nickname%> |
+            welcome: <%=current_user.username%> |
             <a href="<%=logout_url %>">Logout</a>
         <% else %>
             <a href="<%=login_url%>">Login</a> |

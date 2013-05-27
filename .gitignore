@@ -17,3 +17,7 @@ rerun.txt
 pickle-email-*.html
 /public/sitemaps/sitemap.xml.gz
 /public/sitemaps/sitemap1.xml.gz
+
+/public/sitemap.xml.gz
+
+/public/sitemap1.xml.gz

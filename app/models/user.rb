@@ -1,10 +1,10 @@
 #coding=utf-8
 class User < ActiveRecord::Base
-  attr_accessible :nickname, :email, :password, :password_confirmation # 这个地方很重要,否则前台可以伪造表单的role字段从而提升权限
+  attr_accessible :username, :email, :password, :password_confirmation # 这个地方很重要,否则前台可以伪造表单的role字段从而提升权限
   attr_protected :role
   has_secure_password
 
-  validates :nickname, presence: true,
+  validates :username, presence: true,
             format: {:with => /\A\w+\z/, :message => 'must contain only these characters: a-zA-Z0-9_'},
             length: { :in => 3..20 },
             uniqueness: {:case_sensitive => false}
@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
 
   # 通过第三方查找或者创建用户
   def self.find_or_create_from_auth_hash(auth)
-    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :nickname => auth.info.nickname, :image => auth.info.image})
-    user.nickname = auth.info.name if user.nickname.blank?
+    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :username => auth.info.nickname, :image => auth.info.image})
+    user.username = auth.info.name if user.username.blank?
     user.email = auth.info.email if auth.info.email
     user_db = User.where({:sns_uid => user.sns_uid, :sns_provider => user.sns_provider}).first
     return user_db unless user_db.blank?

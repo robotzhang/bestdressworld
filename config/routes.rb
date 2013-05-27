@@ -29,4 +29,6 @@ Bestdressworld::Application.routes.draw do
     match 'options/create_for_product/:product_id' => 'options#create_for_product'
     resources :options
   end
+
+  get '/:username' => 'users#show'
 end

@@ -6,6 +6,7 @@ Bestdressworld::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
+  get 'brands/new' => 'brands#new'
   get 'brands/:url_key' => 'brands#show'
   resources :brands do
     get 'page/:page', :action => :index, :on => :collection

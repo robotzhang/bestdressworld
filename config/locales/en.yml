@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    manage:
+    update:
+    new:
+      brand: "Create your own brand must login as brand user!"

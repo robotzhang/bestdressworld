@@ -1,7 +1,10 @@
 class BrandsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_url, :alert => exception.message
+  end
   def index
-    @brands = Brand.order("id DESC").page(params[:page]).per(20)
+    @brands = Brand.order("id DESC").page(params[:page]).per(19)
   end
 
   def show

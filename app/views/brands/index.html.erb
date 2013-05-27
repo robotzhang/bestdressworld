@@ -2,9 +2,13 @@
 <ul class="brands box clearfix unstyled">
   <% @brands.each_with_index do |brand, index| %>
   <li <%= "class=right-last" if (index+1) % 5 == 0 %>>
-    <% brand_url = brand_url(brand.url_key.blank? ? brand.id : brand.url_key) %>
+    <% brand_url = brand_path(brand.url_key.blank? ? brand.id : brand.url_key) %>
     <div class="logo"><a title="<%=brand.name%>" href="<%= brand_url %>"><img src="<%=brand.logo%>"/></a></div>
     <div class="slogan"><a href="<%= brand_url %>"><%= brand.slogan.blank? ? brand.name : brand.slogan %></a></div>
   </li>
   <% end %>
+  <li<%= "class=right-last" if (@brands.size+1) % 5 == 0 %>>
+    <div class="logo"><a title="Create Your Own Brand!" href="<%=new_brand_path%>" style="font-size: 38px; color: #666;">+</a></div>
+    <div class="slogan"><a href="<%= new_brand_path %>">Create Your Own Brand!</a></div>
+  </li>
 </ul>

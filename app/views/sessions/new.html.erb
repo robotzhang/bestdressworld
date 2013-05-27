@@ -1,6 +1,7 @@
 <% provide(:title, "Sign in") %>
 <div class="sign">
-  <h2>Sign in</h2>
+  <h2>Sign in <small>Not a member? <a href="<%=signup_path%>">sign up</a></small></h2>
+  <%=display_alert%>
   <p><small>Connect with a social network</small></p>
   <ul class="sns unstyled clearfix">
     <li><a class="twitter" href="/auth/twitter"><i></i>Twitter</a></li>

@@ -18,6 +18,7 @@ class BrandsController < ApplicationController
 
   def create
     @brand = Brand.new(params[:brand])
+    @brand.user_id = current_user.id
     @brand.save ? redirect_to(:action => :index) : render(:action => :new)
   end
 

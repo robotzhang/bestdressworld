@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  <li <%=nav_active('users', 'show')%>>
+    <a href="<%=user_path(@user.username)%>">Dashboard</a>
+  </li>
+  <li<%=nav_active('users', 'shares')%>>
+    <a href="<%=shares_user_path(@user.username)%>">Shares</a>
+  </li>
+  <li<%=nav_active('users', 'brands')%>>
+    <a href="<%=brands_user_path(@user.username)%>">Brands</a>
+  </li>
+</ul>

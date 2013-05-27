@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title><%= !yield(:title).blank? ? yield(:title) : 'BestDressWorld.com: Find The Best Dress In The World!' %></title>
-  <meta name="keywords" content="<%= yield(:keywords) %>">
-  <meta name="description" content="<%= yield(:description) %>">
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag params[:controller] %>
-  <%= yield(:stylesheet) %>
-  <%= render "common/ga" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag params[:controller] %>
-  <%= yield(:javascript) %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+  <%= render "common/head_meta" %>
+  </head>
 <body>
   <%= render :partial => 'common/header' %>
   <div class="container"><%= yield %></div>

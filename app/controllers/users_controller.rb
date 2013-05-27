@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "user"
+  before_filter :find_user, :except => [:new, :create]
   def new
     @user = User.new
   end
@@ -15,6 +17,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_username(params[:username])
+
+  end
+
+  def likes
+
+  end
+
+  def brands
+
+  end
+
+  def shares
+
+  end
+
+  protected
+  def find_user
+    @user = User.find_by_username(params[:id])
+    render_404 if @user.nil?
   end
 end

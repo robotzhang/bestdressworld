@@ -1,0 +1,24 @@
+<%=render "menu"%>
+
+<% if @user.brand.blank? %>
+<div class="text-center">
+  <a href="<%= new_brand_path %>" class="btn btn-info"> create my own brand! </a>
+</div>
+<% end %>
+
+<% brand = @user.brand %>
+<div>
+  <div class="pull-left" style="margin-right: 15px;">
+    <p><img src="<%=@user.brand.logo%>"/></p>
+    <div class="text-center"><a href="<%=edit_brand_path(brand)%>" class="btn btn-info btn-block">Edit</a></div>
+  </div>
+  <div>
+    <p><strong><%=brand.name%></strong> <small>(<%=brand.slogan%>)</small></p>
+    <p><strong>Website</strong>: <%=brand.website%></p>
+    <p><strong>Since</strong>: <%=brand.year%></p>
+    <p><strong>Good at</strong>: <%=brand.good_at%></p>
+    <p><strong>Country</strong>: <%=brand.country%></p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="clearfix"><%=brand.introduce%></div>
+</div>

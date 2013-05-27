@@ -15,7 +15,6 @@ Bestdressworld::Application.routes.draw do
   match '/signup' => 'users#new'
   match '/login' => 'sessions#new'
   match '/logout' =>  'sessions#destroy'
-  resources :users
   get '/auth/:provider/callback', :to => 'sessions#create'
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -30,5 +29,11 @@ Bestdressworld::Application.routes.draw do
     resources :options
   end
 
-  get '/:username' => 'users#show'
+  resources :users, :path => "" do
+    member do
+      get :brands
+      get :shares
+      #get :likes
+    end
+  end
 end

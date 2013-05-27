@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= render "common/head_meta" %>
+</head>
+<body>
+  <%= render :partial => 'common/header' %>
+
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <div class="box padding20 clearfix">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="box padding20">
+          <div><img src="<%=@user.image%>"/></div>
+          <div><%=@user.username%></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render :partial => 'common/footer' %>
+</body>
+</html>

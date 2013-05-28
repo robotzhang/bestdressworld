@@ -13,6 +13,7 @@ Bestdressworld::Application.routes.draw do
   end
 
   match '/signup' => 'users#new'
+  post 'users' => 'users#create'
   match '/login' => 'sessions#new'
   match '/logout' =>  'sessions#destroy'
   get '/auth/:provider/callback', :to => 'sessions#create'

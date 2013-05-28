@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "user"
+  layout "user", :except => [:new, :create]
   before_filter :find_user, :except => [:new, :create]
   def new
     @user = User.new

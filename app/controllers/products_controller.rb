@@ -11,6 +11,12 @@ class ProductsController < ApplicationController
     @product = Product.find_by_seo_url(params[:seo_url]).decorate
   end
 
+  def create
+    asin = params[:asin]
+    flash[:alert] = "amazon asin can't be blank" if asin.blank?
+    redirect_to params[:ret_url]
+  end
+
   def edit
     @product = Product.find(params[:id]).decorate
   end

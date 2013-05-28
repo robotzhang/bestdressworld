@@ -5,7 +5,7 @@
     <form class="mb0" method="post" action="<%= products_path %>">
       <span class="add-on">amazon asin</span>
       <input type="hidden" name="ret_url" value="<%=request.url%>"/>
-      <input class="span2" name="asin" type="text" value=""/>
+      <input class="span2" name="asin" type="text" value="<%= flash[:asin] %>"/>
       <button class="btn btn-info" type="submit">share!</button>
     </form>
   </div>

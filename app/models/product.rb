@@ -1,6 +1,8 @@
 #coding=utf-8
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
+  scope :desc, order("products.updated_at DESC")
+
   attr_protected :user_id, :updater_id
 
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
@@ -19,6 +21,7 @@ class Product < ActiveRecord::Base
 
   before_save do
     self.discount = nil if self.discount.blank? || self.discount.sale_price <= 0
+    self.updater_id = self.user_id if !self.updater_id && self.user_id
   end
 
   def self.get_amazon(asin)

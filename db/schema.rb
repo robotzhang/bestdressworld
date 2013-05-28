@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528024954) do
+ActiveRecord::Schema.define(:version => 20130528104454) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20130528024954) do
 
   create_table "products", :force => true do |t|
     t.string   "asin"
-    t.string   "sku",              :null => false
+    t.string   "sku"
     t.text     "name",             :null => false
     t.string   "currency"
     t.float    "price"

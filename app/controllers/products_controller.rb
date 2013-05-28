@@ -17,6 +17,17 @@ class ProductsController < ApplicationController
     asin = params[:asin]
     flash[:alert] = "Amazon asin can't be blank" if asin.blank?
     flash[:alert] = "Amazon asin: #{asin} has already been shared" if !Product.find_by_asin(asin).blank?
+    if flash[:alert].blank?
+      begin
+        product = Product.get_amazon(asin)
+        product.user_id = current_user.id
+        flash[:alert] = product.save ? "share success" : "share fail"
+      rescue => err
+        flash[:alert] = "Unknown exception"
+      end
+    end
+
+    flash[:asin] = asin
     redirect_to params[:ret_url]
   end
 

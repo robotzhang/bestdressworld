@@ -17,6 +17,7 @@
   </p>
 
   <%= form_for(@user, :html => {:class => (@user.errors.blank? ? 'hide' : '')}) do |f| %>
+      <input type="hidden" name="ret_url" value="<%= params[:ret_url] %>"/>
       <p><small>Sign up with your email address</small></p>
       <%= display_errors(@user) %>
       <p>

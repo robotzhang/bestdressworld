@@ -18,7 +18,7 @@
   <% end %>
 
   <%= form_for(:session, url: sessions_path) do |f| %>
-
+      <input type="hidden" name="ret_url" value="<%= params[:ret_url] %>" />
       <p><%= f.label :email %>
       <%= f.text_field :email %></p>
 

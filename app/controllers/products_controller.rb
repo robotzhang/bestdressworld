@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @products = Product.order("id DESC").includes([:images,:discount]).page(params[:page]).per(10).decorate
     respond_to do |format|
@@ -13,7 +15,8 @@ class ProductsController < ApplicationController
 
   def create
     asin = params[:asin]
-    flash[:alert] = "amazon asin can't be blank" if asin.blank?
+    flash[:alert] = "Amazon asin can't be blank" if asin.blank?
+    flash[:alert] = "Amazon asin: #{asin} has already been shared" if !Product.find_by_asin(asin).blank?
     redirect_to params[:ret_url]
   end
 

@@ -2,8 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
-    if user.has_role?(:admin) # 系统管理员
+    if user.blank? # 游客
+      cannot :manage, :all
+      basic_read_only
+    elsif user.has_role?(:admin) # 系统管理员
       can :manage, :all
     elsif user.has_role?(:editor) # 网站编辑
       can [:create, :read, :update, :amazon], [Product]
@@ -15,7 +17,7 @@ class Ability
         (brand.user_id == user.id)
       end
       basic_read_only
-    else # 游客
+    else
       cannot :manage, :all
       basic_read_only
     end

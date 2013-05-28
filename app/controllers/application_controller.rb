@@ -2,6 +2,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_url(:ret_url => request.url), :alert => exception.message
+  end
+
   def homepage
     @products = Product.order("id DESC").includes([:images]).limit(10).all
     render :template => 'coming', :layout => false

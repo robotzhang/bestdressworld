@@ -23,10 +23,10 @@
       <ul class="pull-right unstyled">
         <% if signed_in? %>
           <li><a href="<%=user_path(current_user.username)%>">welcome: <%=current_user.username%></a></li>
-          <li class="split"><a href="<%=logout_url%>">logout</a></li>
+          <li class="split"><a href="<%=logout_url(:ret_url => request.url)%>">logout</a></li>
         <% else %>
-          <li><a <%=nav_active('sessions', 'login')%> href="<%=login_url%>">login</a></li>
-          <li class="split"><a <%=nav_active('users', 'signup')%> href="<%=signup_url%>">sign up </a></li>
+          <li><a <%=nav_active('sessions', 'login')%> href="<%=login_url(:ret_url => request.url)%>">login</a></li>
+          <li class="split"><a <%=nav_active('users', 'signup')%> href="<%=signup_url(:ret_url => request.url)%>">sign up </a></li>
         <% end %>
       </ul>
     </div>

@@ -18,7 +18,7 @@
 
     <div class="pull-left">
         <% @product.attributes.each do |key, value| %>
-        <% if attrs.include?(key) && !['id', 'created_at', 'updated_at', 'creater_id', 'updater_id'].include?(key) %>
+        <% if attrs.include?(key) && !['id', 'created_at', 'updated_at', 'user_id', 'updater_id'].include?(key) %>
         <div class="control-group">
           <%= f.label key, :class => "control-label" %>
           <div class="controls">

@@ -1,7 +1,7 @@
 #coding=utf-8
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
-  attr_protected :creater_id, :updater_id
+  attr_protected :user_id, :updater_id
 
   validates_uniqueness_of :asin, :message => "%{value} 已经入库"
 
@@ -12,12 +12,13 @@ class Product < ActiveRecord::Base
   after_destroy {options.clear}
   has_one :description, :dependent => :destroy
   has_one :discount, :dependent => :destroy
+  belongs_to :user
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :description, :discount
 
   before_save do
-    self.discount = nil unless self.discount.sale_price > 0
+    self.discount = nil if self.discount.blank? || self.discount.sale_price <= 0
   end
 
   def self.get_amazon(asin)

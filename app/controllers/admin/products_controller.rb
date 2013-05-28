@@ -13,7 +13,7 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def create
     @product = Product.new(params[:product])
-    @product.creater_id = current_user.id
+    @product.user_id = current_user.id
     @product.updater_id = current_user.id
     if @product.save
       params[:ret_url].blank? ? redirect_to(:action => :index) : redirect_to(params[:ret_url], :asin => @product.asin)

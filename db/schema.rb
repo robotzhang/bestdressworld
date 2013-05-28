@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527080417) do
+ActiveRecord::Schema.define(:version => 20130528024954) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20130527080417) do
     t.string   "publisher"
     t.string   "studio"
     t.integer  "sales_rank"
+    t.integer  "user_id",          :null => false
+    t.integer  "updater_id",       :null => false
   end
 
   create_table "reviews", :force => true do |t|
@@ -123,6 +125,9 @@ ActiveRecord::Schema.define(:version => 20130527080417) do
     t.string   "role",            :limit => 8, :default => "user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image",                                            :null => false
+    t.string   "sns_uid",                                          :null => false
+    t.string   "sns_provider",                                     :null => false
   end
 
 end

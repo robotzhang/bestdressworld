@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   has_one :brand
+  has_many :products
 
   before_save { |user| user.email = email.downcase unless email.blank? }
   before_save :create_remember_token

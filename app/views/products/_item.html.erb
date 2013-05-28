@@ -16,6 +16,9 @@
         <span>$<%= product.price %></span>
         <% end %>
       </div>
+      <% if can?(:edit, Product) %>
+      <a class="btn btn-info btn-small btn-block" href="<%= edit_product_path(product, :ret_url => request.url) %>">Edit</a>
+      <% end %>
     </div>
   </div>
   <div class="ft"></div>

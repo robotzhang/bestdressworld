@@ -22,6 +22,8 @@
 body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: #2a2a2a;  }
 
 .box { background-color: #fff; border-radius: 5px; }
+.form-large input[type="text"], .form-large input[type="password"] { height: 20px; line-height: 19px; padding: 7px; margin-bottom: 0px; }
+.form-large textarea { width: 90%; height: 120px; }
 
 .header { }
 .header .bottom { background: url(/assets/nav_bottom_bg.png) repeat-x; height: 25px; }

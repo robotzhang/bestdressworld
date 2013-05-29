@@ -1,1 +1,18 @@
-<%=render "menu"%>
+<div class="box padding10">
+  <h3 style="margin: 0;">Basic Info</h3>
+  <dl class="dl-horizontal">
+    <dt>username</dt>
+    <dd><%=@user.username%></dd>
+    <dt>email</dt>
+    <dd><%=@user.email%></dd>
+    <dt>password</dt>
+    <dd><a href="javascript:void(0);">change your password...</a></dd>
+  </dl>
+</div>
+
+<!--div class="mt15 box padding10 sns">
+  <h3 style="margin: 0;">Social Networks</h3>
+  <% ['facebook', 'twitter', 'google'].each do |sns| %>
+    <i class="<%=sns%>"></i>
+  <% end %>
+</div-->

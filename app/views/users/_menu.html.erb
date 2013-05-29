@@ -1,11 +1,11 @@
 <ul class="nav nav-tabs">
   <li <%=nav_active('users', 'show')%>>
-    <a href="<%=user_path(@user.username)%>">Dashboard</a>
+    <a href="<%=user_path(@user.username)%>"><i class="icon-user"></i> <%=@user.username.capitalize%></a>
   </li>
   <li<%=nav_active('users', 'shares')%>>
-    <a href="<%=shares_user_path(@user.username)%>">Shares</a>
+    <a href="<%=shares_user_path(@user.username)%>"><i class="icon-share"></i> Shares</a>
   </li>
   <li<%=nav_active('users', 'brands')%>>
-    <a href="<%=brands_user_path(@user.username)%>">Brands</a>
+    <a href="<%=brands_user_path(@user.username)%>"><i class="icon-map-marker"></i> Brands</a>
   </li>
 </ul>

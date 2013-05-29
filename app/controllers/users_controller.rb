@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 
   def shares
     @products = Product.desc.where({:user_id => @user.id}).page(params[:page]).per(8).decorate
+    respond_to do |format|
+      format.html
+      format.js {render :template => 'products/waterfall' }
+    end
   end
 
   protected

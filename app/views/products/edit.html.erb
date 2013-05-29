@@ -7,11 +7,9 @@
   <%= f.label :price %>
   <%= f.text_field :price %>
 
-  <%= f.fields_for :discount do |builder| %>
-    <%= builder.hidden_field :product_id %>
-    <%= builder.label :sale_price%>
-    <%= builder.text_field :sale_price%>
-  <% end %>
+  <label for="product_discount_attributes_sale_price">Sale price</label>
+  <input type="hidden" name="product[discount_attributes][product_id]" value="<%= @product.id %>"/>
+  <input id="product_discount_attributes_sale_price" type="text" name="product[discount_attributes][sale_price]" value="<%= @product.discount ? @product.discount.sale_price : 0 %>"/>
 
   <div class="options">
   <% Option.data.each_with_index do|(group, data), index| %>

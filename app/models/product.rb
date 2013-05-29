@@ -22,6 +22,7 @@ class Product < ActiveRecord::Base
   before_save do
     self.discount = nil if self.discount.blank? || self.discount.sale_price <= 0
     self.updater_id = self.user_id if !self.updater_id && self.user_id
+    self.discount.price = self.price if self.discount && self.discount.price.blank?
   end
 
   def self.get_amazon(asin)

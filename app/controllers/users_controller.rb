@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def shares
-    @products = Product.desc.where({:user_id => @user.id}).page(params[:page]).per(10).decorate
+    @products = Product.desc.where({:user_id => @user.id}).page(params[:page]).per(8).decorate
   end
 
   protected

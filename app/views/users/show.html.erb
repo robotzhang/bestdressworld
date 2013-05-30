@@ -3,6 +3,7 @@
   <dl class="dl-horizontal">
     <dt>username</dt>
     <dd><%=@user.username%></dd>
+    <% if can? :edit, @user %>
     <dt>email</dt>
     <dd>
       <% if @user.email %>
@@ -13,6 +14,7 @@
     </dd>
     <dt>password</dt>
     <dd><a href="javascript:void(0);">change your password...</a></dd>
+    <% end %>
     <dt>created at</dt>
     <dd><%=@user.created_at.to_date%></dd>
   </dl>

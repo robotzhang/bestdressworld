@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   layout "user", :except => [:new, :create]
   before_filter :find_user, :except => [:new, :create]
+  load_and_authorize_resource :only => [:update]
+
   def new
     @user = User.new
   end

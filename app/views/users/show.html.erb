@@ -4,7 +4,13 @@
     <dt>username</dt>
     <dd><%=@user.username%></dd>
     <dt>email</dt>
-    <dd><%=@user.email%></dd>
+    <dd>
+      <% if @user.email %>
+        <%=@user.email%>
+      <% else %>
+        <a href="javascript:void(0);">set your email...</a>
+      <% end %>
+    </dd>
     <dt>password</dt>
     <dd><a href="javascript:void(0);">change your password...</a></dd>
     <dt>created at</dt>

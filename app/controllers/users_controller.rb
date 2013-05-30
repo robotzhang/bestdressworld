@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   protected
   def find_user
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by_username(params[:id]).decorate
     render_404 if @user.nil?
   end
 end

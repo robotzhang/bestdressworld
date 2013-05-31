@@ -5,11 +5,13 @@ class MoveUserDataToIdentity < ActiveRecord::Migration
     end
     remove_column :users, :sns_provider
     remove_column :users, :sns_uid
+    add_column :users, :nickname, :string
   end
 
   def down
     Identity.delete_all
     add_column :users, :sns_provider, :string
     add_column :users, :sns_uid, :string
+    remove_column :users, :nickname
   end
 end

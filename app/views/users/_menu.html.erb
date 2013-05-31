@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
   <li <%=nav_active('users', 'show')%>>
-    <a href="<%=user_path(@user.username)%>"><i class="icon-user"></i> <%=@user.username.capitalize%></a>
+    <a href="<%=user_path(@user.username)%>"><i class="icon-user"></i> <%=@user.nickname.capitalize%></a>
   </li>
   <li<%=nav_active('users', 'shares')%>>
     <a href="<%=shares_user_path(@user.username)%>"><i class="icon-share"></i> Shares</a>

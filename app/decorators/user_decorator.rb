@@ -10,7 +10,7 @@ class UserDecorator < Draper::Decorator
 
   def nickname
     return object.nickname if object.nickname
-    object.identities.first.name
+    object.username
   end
 
   # 参数说明：s - 大小 d - 默认图片,default -自定义的默认头像

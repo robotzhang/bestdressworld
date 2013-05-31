@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
   has_one :brand
-  has_one :identity
+  has_many :identities
   has_many :products
 
   before_save { |user| user.email = email.downcase unless email.blank? }
@@ -25,22 +25,11 @@ class User < ActiveRecord::Base
     self.role == role.to_s
   end
 
-  # 通过第三方查找或者创建用户
-  def self.find_or_create_from_auth_hash(auth)
-    identity = Identity.find_with_omniauth(auth)
-    user = User.new({:username => auth.info.name})
-    user.email = auth.info.email if auth.info.email
-    user_db = User.where({:sns_uid => user.sns_uid, :sns_provider => user.sns_provider}).first
-    return user_db unless user_db.blank?
-    user.save!(:validate => false) # 不验证保存
-    user
-  end
-
   def self.find_or_create_with_omniauth(auth)
     identity = Identity.find_with_omniauth(auth)
-    identity = Identity.create_with_omniauth(auth) if identity
+    identity = Identity.create_with_omniauth(auth) if identity.blank?
     return identity.user if identity && identity.user
-    user = User.new(username: 'sns_'+identity.id)
+    user = User.new(username: 'sns_' + (identity.id+10086).to_s, nickname: identity.name)
     user.identity = identity
     user.save!(:validate => false)
     user

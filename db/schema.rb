@@ -62,9 +62,11 @@ ActiveRecord::Schema.define(:version => 20130531074155) do
   end
 
   create_table "identities", :force => true do |t|
+    t.integer  "user_id"
     t.string   "uid"
     t.string   "provider"
-    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

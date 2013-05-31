@@ -27,12 +27,22 @@ class User < ActiveRecord::Base
 
   # 通过第三方查找或者创建用户
   def self.find_or_create_from_auth_hash(auth)
-    user = User.new({:sns_uid => auth.uid, :sns_provider => auth.provider, :username => auth.info.name, :image => auth.info.image})
-    user.username = user.sns_provider + user.sns_uid if user.username.blank?
+    identity = Identity.find_with_omniauth(auth)
+    user = User.new({:username => auth.info.name})
     user.email = auth.info.email if auth.info.email
     user_db = User.where({:sns_uid => user.sns_uid, :sns_provider => user.sns_provider}).first
     return user_db unless user_db.blank?
     user.save!(:validate => false) # 不验证保存
+    user
+  end
+
+  def self.find_or_create_with_omniauth(auth)
+    identity = Identity.find_with_omniauth(auth)
+    identity = Identity.create_with_omniauth(auth) if identity
+    return identity.user if identity && identity.user
+    user = User.new(username: 'sns_'+identity.id)
+    user.identity = identity
+    user.save!(:validate => false)
     user
   end
 

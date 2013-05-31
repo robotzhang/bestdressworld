@@ -4,7 +4,13 @@ class UserDecorator < Draper::Decorator
   # 头像地址
   def image
     return object.image if !object.image.blank?
-    gravatar
+    return gravatar if object.email
+    ""
+  end
+
+  def nickname
+    return object.nickname if object.nickname
+    object.identities.first.name
   end
 
   # 参数说明：s - 大小 d - 默认图片,default -自定义的默认头像

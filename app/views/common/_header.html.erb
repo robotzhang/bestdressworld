@@ -16,7 +16,7 @@
             <div class="input-append">
               <a class="btn " href="<%=user_path(current_user.username)%>">
                 <i class="icon-user"></i>
-                <%=current_user.username%>
+                <%=current_user.nickname%>
                 <!--b class="caret"></b-->
               </a>
               <a class="btn" href="<%= logout_path(:ret_url => request.url) %>"><i class="icon-off"></i> logout</a>

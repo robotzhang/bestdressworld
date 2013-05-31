@@ -125,9 +125,9 @@ ActiveRecord::Schema.define(:version => 20130528104454) do
     t.string   "role",            :limit => 8, :default => "user"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image",                                            :null => false
-    t.string   "sns_uid",                                          :null => false
-    t.string   "sns_provider",                                     :null => false
+    t.string   "image"
+    t.string   "sns_uid"
+    t.string   "sns_provider"
   end
 
 end

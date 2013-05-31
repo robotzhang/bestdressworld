@@ -1,0 +1,20 @@
+defaults: &defaults
+  twitter_id: 'wfv1ezxG7IfnBxPR87S0wg'
+  twitter_secret: '0t6g3Svs2FLktHZ3yEcywUVzFzz6ufJxGR60uHMUaY'
+  facebook_id: '371470182974626'
+  facebook_secret: '5eadc2802d9f814d1d6d7af2b6239baa'
+  google_id: '79816562973.apps.googleusercontent.com'
+  google_secret: '_QUXnZWXfB59AFTFfydAxbnt'
+
+development:
+  <<: *defaults
+  facebook_id: '363950773704483'
+  facebook_secret: '15140d7e95b8323cb4d165404a80023b'
+
+test:
+  <<: *defaults
+  facebook_id: '363950773704483'
+  facebook_secret: '15140d7e95b8323cb4d165404a80023b'
+
+production:
+  <<: *defaults

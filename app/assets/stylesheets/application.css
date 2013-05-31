@@ -24,6 +24,10 @@ body { background-color: #f2f2f2; background-image: url(/assets/bg.png); color: 
 .box { background-color: #fff; border-radius: 5px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33); }
 .form-large input[type="text"], .form-large input[type="password"] { height: 20px; line-height: 19px; padding: 7px; margin-bottom: 0px; }
 .form-large textarea { width: 90%; height: 120px; }
+i.twitter, i.facebook, i.google { background: url(/assets/common/sns.png) no-repeat; margin: 0; width: 25px; height: 25px; display: inline-block;  }
+i.twitter { background-position: 0px -88px; }
+i.facebook { background-position: -33px -89px; }
+i.google { background-position: -65px -60px; }
 
 .header { }
 .header .bottom { background: url(/assets/nav_bottom_bg.png) repeat-x; height: 25px; }

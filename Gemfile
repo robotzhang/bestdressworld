@@ -50,3 +50,9 @@ gem 'unicorn', :platforms => :ruby
 
 # To use debugger
 # gem 'debugger'
+
+# Better Errors replaces the standard Rails error page
+group :development do
+  gem "better_errors" # https://github.com/charliesome/better_errors
+  gem "binding_of_caller"
+end

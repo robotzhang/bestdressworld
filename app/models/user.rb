@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     identity = Identity.find_with_omniauth(auth)
     identity = Identity.create_with_omniauth(auth) if identity.blank?
     return identity.user if identity && identity.user
-    user = User.new(username: 'sns_' + (identity.id+10086).to_s, nickname: identity.name, image: identity.image)
+    user = User.new(username: 'sns_' + (identity.id+10086).to_s, nickname: identity.name)
     user.identities = [identity]
     user.save!(:validate => false)
     user

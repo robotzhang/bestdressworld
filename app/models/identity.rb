@@ -1,6 +1,5 @@
 class Identity < ActiveRecord::Base
   # attr_accessible :title, :body
-  validates :user_id, presence: true
   validates :provider, presence: true
   validates :uid, presence: true, :uniqueness => {:scope => :provider}
   belongs_to :user
@@ -10,7 +9,6 @@ class Identity < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    # email 已经存在
-    create(uid: auth['uid'], provider: auth['provider'], image: auth['image'])
+    create!(uid: auth['uid'], provider: auth['provider'], image: auth['info']['image'], email: auth['info'][:email], name: auth['info'][:name])
   end
 end

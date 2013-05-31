@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531074155) do
+ActiveRecord::Schema.define(:version => 20130531101927) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20130531074155) do
     t.string   "role",            :limit => 8, :default => "user"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image",                                            :null => false
+    t.string   "image"
     t.string   "nickname"
   end
 

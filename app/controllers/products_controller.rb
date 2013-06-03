@@ -1,3 +1,4 @@
+#coding=utf-8
 class ProductsController < ApplicationController
   load_and_authorize_resource
 
@@ -16,19 +17,30 @@ class ProductsController < ApplicationController
   def create
     asin = params[:asin]
     flash[:alert] = "Amazon asin can't be blank" if asin.blank?
-    flash[:alert] = "Amazon asin: #{asin} has already been shared" if !Product.find_by_asin(asin).blank?
     if flash[:alert].blank?
-      begin
-        product = Product.get_amazon(asin)
-        product.user_id = current_user.id
-        flash[:alert] = product.save ? "share success" : "share fail"
-      rescue => err
-        flash[:alert] = "Unknown exception"
-      end
+      result = Product.create_with_amazon(asin.split(","), current_user)
+      flash[:alert] = result
     end
 
     flash[:asin] = asin
     redirect_to params[:ret_url]
+  end
+
+  # 通过app id和app secret key进行站外抓取amazon数据
+  def api_create
+    @res = []
+
+    user = User.find_by_username(params[:app_id])
+    if user.nil? || params[:app_secret] != Digest::MD5.hexdigest('Good!23')
+      @res << {:success => false, :message => "权限不够"}
+    else
+      @res = Product.create_with_amazon(params[:asin].split(","), user)
+    end
+
+    respond_to do |format|
+      format.json {render :json => @res}
+      format.xml {render :xml => @res}
+    end
   end
 
   def edit

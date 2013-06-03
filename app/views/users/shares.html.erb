@@ -7,7 +7,7 @@
       <button class="btn btn-info" type="submit">share!</button>
     </form>
   </div>
-  <span style="margin-left: 20px; color: red; font-size: 12px;"><%=flash[:alert]%></span>
+  <span style="margin-left: 20px; color: red; font-size: 12px;"><%=flash[:alert].map{|res| res[:msg]}.join("<br>") if flash[:alert]%></span>
 </div>
 
 <%= render "products/waterfall", :products => @products  %>

@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
 
   attr_protected :user_id, :updater_id
 
-  validates_uniqueness_of :asin, :message => "%{value} 已经入库"
+  validates_uniqueness_of :asin, :message => "%{value} has already been shared"
 
   has_many :images, :as => :imageable, :order => '`order` ASC'
   has_and_belongs_to_many :categories
@@ -23,6 +23,23 @@ class Product < ActiveRecord::Base
     self.discount = nil if self.discount.blank? || self.discount.sale_price <= 0
     self.updater_id = self.user_id if !self.updater_id && self.user_id
     self.discount.price = self.price if self.discount && self.discount.price.blank?
+  end
+
+  # 批量抓取
+  def self.create_with_amazon(asins=[], user)
+    result = []
+    asins.each do |asin|
+      begin
+        product = self.get_amazon(asin.strip)
+        product.user_id = user.id
+        product.updater_id = user.id
+        result << (product.save ? {success: true, asin: asin, msg: "share #{asin} success"} : {success: false, asin: asin, msg: product.errors.full_messages})
+      rescue
+        result << {success: false, asin: asin, msg: "get data form amazon fail"}
+      end
+    end
+
+    result
   end
 
   def self.get_amazon(asin)

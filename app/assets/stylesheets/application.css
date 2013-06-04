@@ -28,6 +28,7 @@ i.twitter, i.facebook, i.google { background: url(/assets/common/sns.png) no-rep
 i.twitter { background-position: 0px -88px; }
 i.facebook { background-position: -33px -89px; }
 i.google { background-position: -65px -60px; }
+.input-append .btn.active { color: #FA649F; border-color: #FA649F; }
 
 .header { }
 .header .bottom { background: url(/assets/nav_bottom_bg.png) repeat-x; height: 25px; }

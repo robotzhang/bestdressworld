@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @products = Product.order("id DESC").includes([:images,:discount]).page(params[:page]).per(16).decorate
+    scope = Product
+    if params[:price]
+      price = params[:price].split("_")
+      scope = scope.where("price >= ?", price[0]) unless price[0].blank?
+      scope = scope.where("price <= ?", price[1]) unless price[1].blank?
+    end
+    @products = scope.order("id DESC").includes([:images,:discount]).page(params[:page]).per(16).decorate
     respond_to do |format|
       format.html
       format.js {render :template => 'products/waterfall' }

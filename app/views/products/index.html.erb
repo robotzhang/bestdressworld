@@ -2,10 +2,26 @@
 <% provide(:keywords, "") %>
 <% provide(:description, products_seo_description) %>
 
-<!--div class="container">
-  colors:
-  fabrics:
-  style:
-  tail:
-</div-->
+<div class="input-append">
+  <span class="btn btn-small disabled">price: $</span>
+  <a class="btn btn-small<%=" active" if params[:price].blank?%>" href="<%= products_path(params.merge(:price => nil)) %>">
+    all
+  </a>
+  <a class="btn btn-small<%=" active" if params[:price] == "_100"%>" href="<%= products_path(params.merge(:price => "_100")) %>">
+    < 100
+  </a>
+  <a class="btn btn-small<%=" active" if params[:price].== "100_200"%>" href="<%= products_path(params.merge(:price => "100_200")) %>">
+    100 - 200
+  </a>
+  <a class="btn btn-small<%=" active" if params[:price].== "200_300"%>" href="<%= products_path(params.merge(:price => "200_300")) %>">
+    200 - 300
+  </a>
+  <a class="btn btn-small<%=" active" if params[:price].== "300_500"%>" href="<%= products_path(params.merge(:price => "300_500")) %>">
+    300 - 500
+  </a>
+  <a class="btn btn-small<%=" active" if params[:price].== "500_"%>" href="<%= products_path(params.merge(:price => "500_")) %>">
+    > 500
+  </a>
+</div>
+
 <%= render "products/waterfall", :products => @products %>

@@ -33,9 +33,9 @@ class Product < ActiveRecord::Base
         product = self.get_amazon(asin.strip)
         product.user_id = user.id
         product.updater_id = user.id
-        result << (product.save ? {success: true, asin: asin, msg: "share #{asin} success"} : {success: false, asin: asin, msg: product.errors.full_messages})
+        result << (product.save ? {success: true, asin: asin, message: "share #{asin} success"} : {success: false, asin: asin, message: product.errors.full_messages})
       rescue
-        result << {success: false, asin: asin, msg: "get data form amazon fail"}
+        result << {success: false, asin: asin, message: "get data form amazon fail"}
       end
     end
 

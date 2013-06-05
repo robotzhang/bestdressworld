@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531101927) do
+ActiveRecord::Schema.define(:version => 20130605072320) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20130531101927) do
   create_table "products", :force => true do |t|
     t.string   "asin"
     t.string   "sku"
-    t.text     "name",             :null => false
+    t.text     "name",                            :null => false
     t.string   "currency"
     t.float    "price"
     t.string   "origin"
@@ -116,8 +116,9 @@ ActiveRecord::Schema.define(:version => 20130531101927) do
     t.string   "publisher"
     t.string   "studio"
     t.integer  "sales_rank"
-    t.integer  "user_id",          :null => false
-    t.integer  "updater_id",       :null => false
+    t.integer  "user_id",                         :null => false
+    t.integer  "updater_id",                      :null => false
+    t.integer  "hits",             :default => 0
   end
 
   create_table "reviews", :force => true do |t|

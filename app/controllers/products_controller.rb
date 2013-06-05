@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
     user = User.find_by_username(params[:app_id])
     if user.nil? || params[:app_secret] != Digest::MD5.hexdigest('Good!23')
-      @res << {:success => false, :message => "权限不够"}
+      @res << {:success => false, :message => "have no permissions"}
     else
       @res = Product.create_with_amazon(params[:asin].split(","), user)
     end

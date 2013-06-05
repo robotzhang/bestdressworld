@@ -2,7 +2,7 @@ Bestdressworld::Application.routes.draw do
   root :to => 'application#homepage'
   get 'admin' => 'application#admin'
   get 'api_create_products' => 'products#api_create'
-  get 'products/:seo_url' => 'products#show'
+  match 'products/:seo_url' => 'products#show', :via => [:get, :post]
   resources :products do
     get 'page/:page', :action => :index, :on => :collection
   end

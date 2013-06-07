@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   acts_as_taggable
 
   scope :desc, order("products.updated_at DESC")
+  default_scope order("products.ranking DESC, products.updated_at DESC, products.hits DESC")
 
   attr_protected :user_id, :updater_id
 

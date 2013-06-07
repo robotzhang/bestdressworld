@@ -120,12 +120,12 @@ class Product < ActiveRecord::Base
         end
     ranking += r*20
 
-    ranking += date_ranking(self.updated_at)*20
+    ranking += date_ranking(self.updated_at)*30
     ranking += date_ranking(self.created_at)*10
 
     ranking_hits = self.hits.to_f / max_hits
     ranking_hits = 0.1 if ranking_hits < 0.1
-    ranking += (ranking_hits * 50).to_i
+    ranking += (ranking_hits * 40).to_i
   end
 
   private

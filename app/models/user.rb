@@ -1,5 +1,7 @@
 #coding=utf-8
 class User < ActiveRecord::Base
+  acts_as_tagger
+
   attr_accessible :username, :email, :password, :password_confirmation # 这个地方很重要,否则前台可以伪造表单的role字段从而提升权限
   attr_protected :role
   has_secure_password

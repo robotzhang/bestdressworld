@@ -39,6 +39,9 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "omniauth-google"
 
+# 打标签的插件
+gem 'acts-as-taggable-on'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

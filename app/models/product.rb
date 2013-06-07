@@ -1,6 +1,8 @@
 #coding=utf-8
 class Product < ActiveRecord::Base
   #attr_accessible :asin, :sku, :name, :from_url, :buy_url
+  acts_as_taggable
+
   scope :desc, order("products.updated_at DESC")
 
   attr_protected :user_id, :updater_id

@@ -1,0 +1,33 @@
+<% provide(:stylesheet, stylesheet_link_tag('homepage')) %>
+<div class="box padding20 mb15">
+  <p>
+      The <strong>Latest</strong> Best Dresses
+      <a href="<%= products_path %>"><small>more..</small></a>
+  </p>
+  <ul class="products unstyled clearfix">
+    <% @latest.each do |product| %>
+    <li><img src="<%=product.images[0].url%>"/></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="box padding20 mb15">
+    <p>
+        The <strong>Hottest</strong> Best Dresses
+        <a href="<%=products_path%>"><small>more..</small></a>
+    </p>
+  <ul class="products unstyled clearfix">
+    <% @hottest.each do |product| %>
+        <li><img src="<%=product.images[0].url%>"/></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="box padding20">
+    <p>
+        The Best <strong>Wedding</strong> Dresses
+    </p>
+  <ul class="products unstyled clearfix">
+    <li></li>
+  </ul>
+</div>

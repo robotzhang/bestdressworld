@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def homepage
-    @products = Product.order("id DESC").includes([:images]).limit(10).all
-    render :template => 'coming', :layout => false
+    @hottest = Product.includes([:images]).limit(6).decorate
+    @latest = Product.unscoped.order("updated_at DESC").includes([:images]).limit(6).decorate
+    render :template => 'homepage_v1'
   end
 
   def admin

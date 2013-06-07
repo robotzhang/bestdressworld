@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20130607054106) do
     t.integer  "user_id",                         :null => false
     t.integer  "updater_id",                      :null => false
     t.integer  "hits",             :default => 0
-    t.integer  "ranking"
+    t.integer  "ranking",          :default => 0
   end
 
   add_index "products", ["ranking"], :name => "index_products_on_ranking"

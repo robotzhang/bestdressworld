@@ -98,4 +98,47 @@ class Product < ActiveRecord::Base
   def previous
     self.class.where("id < ?", self.id).order("id desc").first
   end
+
+  def count_ranking
+    max_hits = Product.maximum(:hits)
+    # 按照sales_rank分档次 , >1w: , 5k-1w: , 3k-5k, ,
+    # updated_at: 1天内 100%，1周内 80%，1月内 60%，1季度 50%，半年 30%，1年 20%，大于1年 10%
+    # hits:
+    # 权重的配比是 hits: 50%, sale_rank: 20%, updated_at: 20%, created_at: 10%
+    ranking = 0
+    r = case self.sales_rank
+          when nil then 0
+          when 10000..20000 then 0.2
+          when 5000..10000 then 0.3
+          when 1000..5000 then 0.5
+          when 700..1000 then 0.7
+          when 500..700 then 0.8
+          when 200..500 then 0.9
+          when 0..200 then 1
+          else 0.1
+        end
+    ranking += r*20
+
+    ranking += date_ranking(self.updated_at)*20
+    ranking += date_ranking(self.created_at)*10
+
+    ranking_hits = self.hits.to_f / max_hits
+    ranking_hits = 0.1 if ranking_hits < 0.1
+    ranking += (ranking_hits * 50).to_i
+  end
+
+  private
+  def date_ranking(date)
+    days = (Time.now.to_s.to_date - date.to_date).to_i
+    case days
+      when 0 then 1
+      when 1 then 0.9
+      when 1..7 then 0.8
+      when 7..30 then 0.6
+      when 30..90 then 0.5
+      when 90..180 then 0.3
+      when 180..365 then 0.2
+      else 0.1
+    end
+  end
 end

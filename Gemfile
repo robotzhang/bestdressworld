@@ -42,6 +42,9 @@ gem "omniauth-google"
 # 打标签的插件
 gem 'acts-as-taggable-on'
 
+# 定时任务
+#gem 'whenever', :require => false
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

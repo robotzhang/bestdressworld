@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607015415) do
+ActiveRecord::Schema.define(:version => 20130607054106) do
 
   create_table "brands", :force => true do |t|
     t.string   "name",       :null => false
@@ -119,7 +119,10 @@ ActiveRecord::Schema.define(:version => 20130607015415) do
     t.integer  "user_id",                         :null => false
     t.integer  "updater_id",                      :null => false
     t.integer  "hits",             :default => 0
+    t.integer  "ranking"
   end
+
+  add_index "products", ["ranking"], :name => "index_products_on_ranking"
 
   create_table "reviews", :force => true do |t|
     t.integer  "product_id", :null => false

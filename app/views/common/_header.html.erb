@@ -1,30 +1,26 @@
 <div class="header">
-  <div class="info-bar" style="height: 60px; margin-top: 10px;">
-    <div class="container">
-      <a href="<%= root_url %>"><img src="<%= asset_path('logo.png') %>"/></a>
-    </div>
-  </div>
   <div class="nav-bar">
-    <div class="container">
+    <div class="container text-center">
       <ul class="nav-main pull-left unstyled">
-        <li><a <%=nav_active(nil, 'homepage')%> href="<%= root_url %>">Home</a></li>
+        <li><a <%=nav_active(nil, 'homepage')%> href="<%= root_url %>"><i class="icon-home"></i> Home</a></li>
         <li class="split"><a <%=nav_active('products')%> href="<%= products_url %>">Products</a></li>
         <!--li class="split"><a <%=nav_active('brands')%> href="<%= brands_url %>">Brands</a></li-->
       </ul>
-      <div class="pull-right">
+      <a href="<%= root_url %>"><img src="<%= asset_path('logo.png') %>"/></a>
+      <div class="pull-right" style="margin-top: 3px;">
         <% if signed_in? %>
             <div class="input-append">
-              <a class="btn " href="<%=user_path(current_user.username)%>">
+              <a class="btn btn-small" href="<%=user_path(current_user.username)%>">
                 <i class="icon-user"></i>
                 <%=current_user.nickname%>
                 <!--b class="caret"></b-->
               </a>
-              <a class="btn" href="<%= logout_path(:ret_url => request.url) %>"><i class="icon-off"></i> logout</a>
+              <a class="btn btn-small" href="<%= logout_path(:ret_url => request.url) %>"><i class="icon-off"></i> logout</a>
             </div>
         <% else %>
             <div class="input-append">
-              <a class="btn" href="<%=login_url(:ret_url => request.url)%>">login</a>
-              <a class="btn" href="<%=signup_url(:ret_url => request.url)%>">sign up </a>
+              <a class="btn btn-small" href="<%=login_url(:ret_url => request.url)%>">login</a>
+              <a class="btn btn-small" href="<%=signup_url(:ret_url => request.url)%>">sign up </a>
             </div>
         <% end %>
       </div>

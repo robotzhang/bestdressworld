@@ -6,7 +6,7 @@
         <li class="split"><a <%=nav_active('products')%> href="<%= products_url %>">Products</a></li>
         <!--li class="split"><a <%=nav_active('brands')%> href="<%= brands_url %>">Brands</a></li-->
       </ul>
-      <a style="height: 25px;" href="<%= root_url %>"><img src="<%= asset_path('logo.png') %>"/></a>
+      <a href="<%= root_url %>"><img style="height: 25px;" src="<%= asset_path('logo.png') %>"/></a>
       <div class="pull-right" style="margin-top: 3px;">
         <% if signed_in? %>
             <div class="input-append">

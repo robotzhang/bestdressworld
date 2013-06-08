@@ -2,35 +2,33 @@
 
 <div class="slogan">Find the best dress in the world, share with friends!</div>
 
-<div class="box padding20 mb15">
-  <p>
-      The <strong>Latest</strong> Best Dresses
-      <a href="<%= products_path %>"><small>more..</small></a>
-  </p>
-  <ul class="products unstyled clearfix">
-    <% @latest.each do |product| %>
-    <li><img src="<%=product.images[0].url%>"/></li>
-    <% end %>
-  </ul>
-</div>
+<p class="list-title">
+  The <strong>Latest</strong> Best Dresses
+  <a href="<%= products_path %>"><small>more..</small></a>
+</p>
 
-<div class="box padding20 mb15">
-    <p>
-        The <strong>Hottest</strong> Best Dresses
-        <a href="<%=products_path%>"><small>more..</small></a>
-    </p>
-  <ul class="products unstyled clearfix">
-    <% @hottest.each do |product| %>
-        <li><img src="<%=product.images[0].url%>"/></li>
-    <% end %>
-  </ul>
-</div>
+<ul class="products unstyled clearfix">
+  <% @latest.each do |product| %>
+      <li class="box">
+        <a title="<%=product.name%>" href="<%=product_path(product.seo_url)%>">
+          <img src="<%=product.images[0].url%>"/>
+        </a>
+        <div><%= render "products/price", :product => product %></div>
+      </li>
+  <% end %>
+</ul>
 
-<div class="box padding20">
-    <p>
-        The Best <strong>Wedding</strong> Dresses
-    </p>
-  <ul class="products unstyled clearfix">
-    <li></li>
-  </ul>
-</div>
+<p class="list-title mt15">
+  The <strong>Hottest</strong> Best Dresses
+  <a href="<%=products_path%>"><small>more..</small></a>
+</p>
+<ul class="products unstyled clearfix">
+  <% @hottest.each do |product| %>
+    <li class="box">
+      <a title="<%=product.name%>" href="<%=product_path(product.seo_url)%>">
+        <img src="<%=product.images[0].url%>"/>
+      </a>
+      <div><%= render "products/price", :product => product %></div>
+    </li>
+  <% end %>
+</ul>

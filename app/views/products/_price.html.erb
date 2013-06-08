@@ -1,0 +1,10 @@
+<% if !product.discount.blank? && product.discount.sale_price > 0 && product.discount.sale_price < product.price %>
+    <span style="text-decoration:line-through;"><%=product.currency_symbol + product.price.to_s%></span>
+    <span style="font-weight: bold; color: #FA649F;"><%=product.currency_symbol+ product.discount.sale_price.to_s if product.discount%></span>
+    <small>save</small>
+    <span style="font-weight: bold; color: #FA649F;">
+      <%=product.cut_down%>
+    </span>
+<% else %>
+    <%=product.currency_symbol + product.price.to_s%>
+<% end %>

@@ -9,12 +9,7 @@
     <div class="content">
       <%= product.name.downcase %>
       <div class="price">
-        <% if !product.discount.blank? && product.discount.sale_price > 0 && product.discount.sale_price < product.price %>
-        <span style="text-decoration:line-through;">$<%= product.price %></span>
-        <strong>$<%=product.discount.sale_price%></strong>
-        <% else %>
-        <span>$<%= product.price %></span>
-        <% end %>
+        <%= render "products/price", :product => product %>
       </div>
       <% if can?(:edit, product) %>
       <a class="btn btn-info btn-small btn-block" href="<%= edit_product_path(product, :ret_url => request.url) %>">Edit</a>

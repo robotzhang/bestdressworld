@@ -24,6 +24,10 @@ class ProductDecorator < Draper::Decorator
     prefix += prefix+", "if !prefix.blank?
     "find the best #{prefix}#{name.downcase} in the world from #{domain}, buy from #{object.from_site}! "
   end
+
+  def cut_down
+    ((object.price - object.discount.sale_price) / object.price * 100).to_i.to_s + '%'
+  end
 end
 
 # for kaminari pagination

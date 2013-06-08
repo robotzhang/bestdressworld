@@ -12,5 +12,15 @@
 .item-group p { font-size: 14px; }
 .item-group p a { color: #FA649F; }
 
-.products li { float: left; width: 150px; text-align: center; }
+.products li { float: left; width: 150px; text-align: center;  overflow: hidden; margin-right: 11px; }
+.products li:last-child, .products li.last { margin-right: 0; }
 .products li img { height: 170px; }
+
+.slogan { font-size: 22px; padding: 40px 0; text-align: center; color: #777;
+  text-shadow: 0 1px 1px #fff; font-style: italic; font-family: Georgia;
+/*text-shadow: -1px -1px 0 #fff,1px 1px 0 #333,1px 1px 0 #444;*/
+}
+
+.list-title { font-size: 15px; color: #666; }
+.list-title strong { color: #FA649F; }
+.list-title small { font-style: italic; margin-left: 10px; }

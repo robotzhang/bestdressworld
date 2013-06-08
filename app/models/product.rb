@@ -28,6 +28,11 @@ class Product < ActiveRecord::Base
     self.discount.price = self.price if self.discount && self.discount.price.blank?
   end
 
+  after_save do
+    ranking = self.count_ranking
+    self.update_column(:ranking, ranking)
+  end
+
   # 批量抓取
   def self.create_with_amazon(asins=[], user)
     result = []

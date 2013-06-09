@@ -1,6 +1,6 @@
 #coding=utf-8
 class ProductsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:api_create]
 
   def index
     scope = Product
